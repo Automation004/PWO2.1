@@ -1,0 +1,1281 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8' /> 
+	<meta name='description' content='' />
+	<meta name='robots' content='noodp, noydir' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+
+	<link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link href='https://cdn.rawgit.com/anshooarora/extentreports-java/9fa70d0ed9c34a8ed445ceee3494d3d7de7f8918/dist/css/extent.css' type='text/css' rel='stylesheet' />
+	
+	<title>WMPS 2.0</title>
+
+</head>
+	<body class='extent standard default hide-overflow '>
+		<div id='theme-selector' alt='Click to toggle theme. To enable by default, use theme configuration.' title='Click to toggle theme. To enable by default, use theme configuration.'>
+			<span><i class='material-icons'>desktop_windows</i></span>
+		</div>
+
+<nav>
+	<div class="nav-wrapper">
+		<a href="#!" class="brand-logo blue darken-3">Extent</a>
+
+		<!-- slideout menu -->
+		<ul id='slide-out' class='side-nav fixed hide-on-med-and-down'>
+			<li class='waves-effect active'><a href='#!' view='test-view' onclick="configureView(0);chartsView('test');"><i class='material-icons'>dashboard</i></a></li>
+						<li class='waves-effect'><a href='#!' onclick="configureView(-1);chartsView('dashboard');" view='dashboard-view'><i class='material-icons'>track_changes</i></i></a></li>
+		</ul>
+
+		<!-- report name -->
+		<span class='report-name'>WMPS 2.0</span>
+		
+		<!-- report headline -->
+		<span class='report-headline'></span>
+
+		<!-- nav-right -->
+		<ul id='nav-mobile' class='right hide-on-med-and-down nav-right'>
+			<a href='#!'>
+				<span class='label suite-start-time'>02-Sep-2024, 2:39:23 pm</span>
+			</a>
+			<a href='#!'>
+				<span class='label'>v3.0.1</span>
+			</a>
+		</ul>
+	</div>
+</nav>
+		<!-- container -->
+		<div class='container'>
+
+<div id='test-view' class='view'>
+				
+	<section id='controls'>
+		<div class='controls grey lighten-4'>
+			<!-- test toggle -->
+			<div class='chip transparent'>
+				<a class='dropdown-button tests-toggle' data-activates='tests-toggle' data-constrainwidth='true' data-beloworigin='true' data-hover='true' href='#'>
+					<i class='material-icons'>warning</i> Status
+				</a>
+				<ul id='tests-toggle' class='dropdown-content'>
+											<li status='pass'><a href='#!'>Pass <i class='material-icons green-text'>check_circle</i></a></li>
+						<li status='fail'><a href='#!'>Fail <i class='material-icons red-text'>cancel</i></a></li>
+					<li class='divider'></li>
+					<li status='clear' clear='true'><a href='#!'>Clear Filters <i class='material-icons'>clear</i></a></li>
+				</ul>
+			</div>
+			<!-- test toggle -->
+
+			<!-- category toggle -->
+			<!-- category toggle -->
+
+			<!-- clear filters -->
+			<div class='chip transparent hide'>
+				<a class='' id='clear-filters' alt='Clear Filters' title='Clear Filters'>
+					<i class='material-icons'>close</i> Clear
+				</a>
+			</div>
+			<!-- clear filters -->
+
+			<!-- enable dashboard -->
+			<div id='toggle-test-view-charts' class='chip transparent'>
+				<a class='pink-text' id='enable-dashboard' alt='Enable Dashboard' title='Enable Dashboard'>
+					<i class='material-icons'>track_changes</i> Dashboard
+				</a>
+			</div>
+			<!-- enable dashboard -->
+
+			<!-- search -->
+			<div class='chip transparent' alt='Search Tests' title='Search Tests'>
+				<a href="#" class='search-div'>
+					<i class='material-icons'>search</i> Search
+				</a>
+
+				<div class='input-field left hide'>
+					<input id='search-tests' type='text' class='validate browser-default' placeholder='Search Tests...'>
+				</div>
+				
+			</div>
+			<!-- search -->
+		</div>
+	</section>
+
+
+<div id='test-view-charts' class='subview-full'>
+	<div id='charts-row' class='row nm-v nm-h'>
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Tests</div>
+				<div class='chart-box'>
+					<canvas id='parent-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span><span class='strong'>1</span> test(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong'>19</span> test(s) failed, <span class='strong'>0</span> others
+				</div>
+			</div>
+		</div>
+		
+		<div class='col s12 m6 l6 np-h'>
+			<div class='card-panel nm-v'>
+				<div class='left panel-name'>Steps</div>
+				<div class='chart-box'>
+					<canvas id='child-analysis' width='100' height='80'></canvas>
+				</div>
+				<div class='block text-small'>
+					<span><span class='strong'>10</span> step(s) passed</span>
+				</div>
+				<div class='block text-small'>
+					<span class='strong'>19</span> step(s) failed, <span class='strong'>29</span> others
+				</div>
+			</div>
+		</div>
+		
+	</div>
+</div>
+
+	<div class='subview-left left'>
+		
+		<div class='view-summary'>
+			<h5>Tests</h3>
+			<ul id='test-collection' class='test-collection'>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='1'>
+					<div class='test-heading'>
+						<span class='test-name'>EquipOrInstName</span>
+						<span class='test-time'>02-Sep-2024, 2:39:23 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:39:23 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:39:54 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+843ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:39:23 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:39:24 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:39:24 pm</td>
+					<td class='step-details'>Clicking on Equip/Inst Name</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:39:54 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//a[normalize-space()='Equip/Inst Name']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//a[normalize-space()='Equip/Inst Name']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  pass' status='pass' bdd='false' test-id='2'>
+					<div class='test-heading'>
+						<span class='test-name'>EquipOrInstName</span>
+						<span class='test-time'>02-Sep-2024, 2:39:54 pm</span>
+						<span class='test-status right pass'>pass</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:39:54 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:39:54 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 0s+0ms</span>
+</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='3'>
+					<div class='test-heading'>
+						<span class='test-name'>RoomName</span>
+						<span class='test-time'>02-Sep-2024, 2:40:24 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:40:24 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:40:54 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+404ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:40:24 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:40:24 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:40:24 pm</td>
+					<td class='step-details'>Clicking on Room Name</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:40:54 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.EE108ABE41A9868F3D5B532997F3BBFB.e.84}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Room Name']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='4'>
+					<div class='test-heading'>
+						<span class='test-name'>RoomName</span>
+						<span class='test-time'>02-Sep-2024, 2:40:54 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:40:54 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:41:25 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+59ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:40:54 pm</td>
+					<td class='step-details'>Searching for Room Name: null</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:41:25 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='5'>
+					<div class='test-heading'>
+						<span class='test-name'>TypeOfWork</span>
+						<span class='test-time'>02-Sep-2024, 2:41:25 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:41:25 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:41:55 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+429ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:41:25 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:41:25 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:41:25 pm</td>
+					<td class='step-details'>Clicking on Type Of Work</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:41:55 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.9ACDE8C058E53B5F94856C11D9CF3458.e.122}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Type Of Work']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='6'>
+					<div class='test-heading'>
+						<span class='test-name'>TypeOfWork</span>
+						<span class='test-time'>02-Sep-2024, 2:41:55 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:41:55 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:42:25 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+21ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:41:55 pm</td>
+					<td class='step-details'>Searching for Type Of Work: Research and Developments</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:42:25 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='7'>
+					<div class='test-heading'>
+						<span class='test-name'>Section</span>
+						<span class='test-time'>02-Sep-2024, 2:42:25 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:42:25 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:42:56 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+571ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:42:25 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:42:26 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:42:26 pm</td>
+					<td class='step-details'>Clicking on Section</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:42:56 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.4B2CAF7783C9D9BA28D7E0B7E150C717.e.154}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Section']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='8'>
+					<div class='test-heading'>
+						<span class='test-name'>Section</span>
+						<span class='test-time'>02-Sep-2024, 2:42:56 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:42:56 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:43:26 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+66ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:42:56 pm</td>
+					<td class='step-details'>Searching for Section: Quality Control Sections</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:43:26 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='9'>
+					<div class='test-heading'>
+						<span class='test-name'>BlockTest</span>
+						<span class='test-time'>02-Sep-2024, 2:43:26 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:43:26 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:43:56 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+518ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:43:26 pm</td>
+					<td class='step-details'>Navigating to Master Block</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:43:26 pm</td>
+					<td class='step-details'>Master Block clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:43:26 pm</td>
+					<td class='step-details'>Clicking on Block</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:43:56 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.A9658B113051825955C05BAD5314F5C7.e.198}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Block']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='10'>
+					<div class='test-heading'>
+						<span class='test-name'>BlockTest</span>
+						<span class='test-time'>02-Sep-2024, 2:43:56 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:43:56 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:44:26 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+48ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:43:56 pm</td>
+					<td class='step-details'>Searching for Block: Quality Control Blocks</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:44:26 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='11'>
+					<div class='test-heading'>
+						<span class='test-name'>FailureObjectTest</span>
+						<span class='test-time'>02-Sep-2024, 2:44:27 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:44:27 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:44:57 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+442ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:44:27 pm</td>
+					<td class='step-details'>Navigating to Master Failure Object</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:44:27 pm</td>
+					<td class='step-details'>Master Failure Object clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:44:27 pm</td>
+					<td class='step-details'>Clicking on Failure Object</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:44:57 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.4662C5827C0CA91E32D63D913BF2959F.e.236}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Failure Object']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='12'>
+					<div class='test-heading'>
+						<span class='test-name'>FailureObjectTest</span>
+						<span class='test-time'>02-Sep-2024, 2:44:57 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:44:57 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:45:27 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+56ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:44:57 pm</td>
+					<td class='step-details'>Searching for Failure Object: Quality Control Failures</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:45:27 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='13'>
+					<div class='test-heading'>
+						<span class='test-name'>MaterialNameTest</span>
+						<span class='test-time'>02-Sep-2024, 2:45:27 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:45:27 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:45:58 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+588ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:45:27 pm</td>
+					<td class='step-details'>Navigating to Master Material Name</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:45:28 pm</td>
+					<td class='step-details'>Master Material Name clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:45:28 pm</td>
+					<td class='step-details'>Clicking on Material Name</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:45:58 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.D5BDA4273EBC72330172BD37CA8956B3.e.272}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Material Name']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='14'>
+					<div class='test-heading'>
+						<span class='test-name'>MaterialNameTest</span>
+						<span class='test-time'>02-Sep-2024, 2:45:58 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:45:58 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:46:28 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+76ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:45:58 pm</td>
+					<td class='step-details'>Searching for Material Name: Chemicals</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:46:28 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='15'>
+					<div class='test-heading'>
+						<span class='test-name'>MaterialCodeTest</span>
+						<span class='test-time'>02-Sep-2024, 2:46:28 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:46:28 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:46:58 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+426ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:46:28 pm</td>
+					<td class='step-details'>Navigating to Master Material Code</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:46:28 pm</td>
+					<td class='step-details'>Master Material Code clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:46:28 pm</td>
+					<td class='step-details'>Clicking on Material Code</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:46:58 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.283D9C2FC987E95B55BB3435A94619AC.e.311}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Material Code']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='16'>
+					<div class='test-heading'>
+						<span class='test-name'>MaterialCodeTest</span>
+						<span class='test-time'>02-Sep-2024, 2:46:58 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:46:58 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:47:28 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+45ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:46:58 pm</td>
+					<td class='step-details'>Searching for Material Code: CHEM-001</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:47:28 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='17'>
+					<div class='test-heading'>
+						<span class='test-name'>RoomId</span>
+						<span class='test-time'>02-Sep-2024, 2:47:28 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:47:28 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:47:59 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+579ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:47:28 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:47:29 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:47:29 pm</td>
+					<td class='step-details'>Clicking on Room Name</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:47:59 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.AA3FF74B6C7E1DD6D301D8F5E97B943C.e.349}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Room ID']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='18'>
+					<div class='test-heading'>
+						<span class='test-name'>RoomId</span>
+						<span class='test-time'>02-Sep-2024, 2:47:59 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:47:59 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:48:29 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+59ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:47:59 pm</td>
+					<td class='step-details'>Searching for Room Name: Cleanroom</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:48:29 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='19'>
+					<div class='test-heading'>
+						<span class='test-name'>EquipOrInstId</span>
+						<span class='test-time'>02-Sep-2024, 2:48:29 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:48:29 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:49:01 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 31s+983ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:48:31 pm</td>
+					<td class='step-details'>Navigating to Master section</td>
+				</tr>
+				<tr class='log' status='pass'>
+					<td class='status pass' title='pass' alt='pass'><i class='material-icons'>check_circle</i></td>
+					<td class='timestamp'>2:48:31 pm</td>
+					<td class='step-details'>Master section clicked successfully</td>
+				</tr>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:48:31 pm</td>
+					<td class='step-details'>Clicking on Equip/Inst Name</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:49:01 pm</td>
+					<td class='step-details'>Exception occurred: element not interactable
+  (Session info: MicrosoftEdge=128.0.2739.54)
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, clickElement {id=f.85873A023662933C338109CF11587EFA.d.92308EFA68DE0156F3A29F58F745648B.e.381}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Element: [[EdgeDriver: MicrosoftEdge on WINDOWS (a3281e7e45e008c9a5dec277079a086f)] -> xpath: //a[normalize-space()='Equip/Inst ID']]
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+				
+				
+				<li class='test displayed active  fail' status='fail' bdd='false' test-id='20'>
+					<div class='test-heading'>
+						<span class='test-name'>EquipOrInstId</span>
+						<span class='test-time'>02-Sep-2024, 2:49:01 pm</span>
+						<span class='test-status right fail'>fail</span>
+					</div>
+					<div class='test-content hide'>
+<div class='test-time-info'>
+	<span class='label start-time'>02-Sep-2024, 2:49:01 pm</span>
+	<span class='label end-time'>02-Sep-2024, 2:49:31 pm</span>
+	<span class='label time-taken grey lighten-1 white-text'>0h 0m 30s+43ms</span>
+</div>
+	<div class='test-steps'>
+		<table class='bordered table-results'>
+			<thead>
+				<tr>
+					<th>Status</th>
+					<th>Timestamp</th>
+					<th>Details</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class='log' status='info'>
+					<td class='status info' title='info' alt='info'><i class='material-icons'>info_outline</i></td>
+					<td class='timestamp'>2:49:01 pm</td>
+					<td class='step-details'>Searching for Equip/Inst Name: Autoclave</td>
+				</tr>
+				<tr class='log' status='fail'>
+					<td class='status fail' title='fail' alt='fail'><i class='material-icons'>cancel</i></td>
+					<td class='timestamp'>2:49:31 pm</td>
+					<td class='step-details'>Exception occurred: no such element: Unable to locate element: {"method":"xpath","selector":"//input[@placeholder='Search...']"}
+  (Session info: MicrosoftEdge=128.0.2739.54)
+For documentation on this error, please visit: https://selenium.dev/exceptions/#no_such_element
+Build info: version: '4.9.0', revision: 'd7057100a6'
+System info: os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '18.0.2.1'
+Driver info: org.openqa.selenium.edge.EdgeDriver
+Command: [a3281e7e45e008c9a5dec277079a086f, findElement {using=xpath, value=//input[@placeholder='Search...']}]
+Capabilities {acceptInsecureCerts: false, browserName: MicrosoftEdge, browserVersion: 128.0.2739.54, fedcm:accounts: true, ms:edgeOptions: {debuggerAddress: localhost:62153}, msedge: {msedgedriverVersion: 128.0.2739.54 (baeaa1ac164a..., userDataDir: C:\Users\sharuk.k\AppData\L...}, networkConnectionEnabled: false, pageLoadStrategy: normal, platformName: WINDOWS, proxy: Proxy(), se:cdp: ws://localhost:62153/devtoo..., se:cdpVersion: 128.0.2739.54, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify, webauthn:extension:credBlob: true, webauthn:extension:largeBlob: true, webauthn:extension:minPinLength: true, webauthn:extension:prf: true, webauthn:virtualAuthenticators: true}
+Session ID: a3281e7e45e008c9a5dec277079a086f</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- subview left -->
+
+	<div class='subview-right left'>
+		<div class='view-summary'>
+			<h5 class='test-name'></h5>
+
+			<div id='step-filters' class="right">
+				<span class="blue-text" status="info" alt="info" title="info"><i class="material-icons">info_outline</i></span>
+				<span class="green-text" status="pass" alt="pass" title="pass"><i class="material-icons">check_circle</i></span>
+				<span class="red-text" status="fail" alt="fail" title="fail"><i class="material-icons">cancel</i></span>
+				<span class="red-text text-darken-4" status="fatal" alt="fatal" title="fatal"><i class="material-icons">cancel</i></span>
+				<span class="pink-text text-lighten-1" status="error" alt="error" title="error"><i class="material-icons">error</i></span>
+				<span class="orange-text" alt="warning" status="warning" title="warning"><i class="material-icons">warning</i></span>
+				<span class="teal-text" status="skip" alt="skip" title="skip"><i class="material-icons">redo</i></span>
+				<span status="clear" alt="Clear filters" title="Clear filters"><i class="material-icons">clear</i></span>
+			</div>
+		</div>
+	</div>
+	<!-- subview right -->
+
+</div>
+<!-- test view --><!-- category view --><!-- exception view --><div id='dashboard-view' class='view hide'>
+	<div class='card-panel transparent np-v'>
+		<h5>Dashboard</h5>
+
+		<div class='row'>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Tests
+					<div class='panel-lead'>20</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Steps
+					<div class='panel-lead'>58</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Start
+					<div class='panel-lead'>02-Sep-2024, 2:39:23 pm</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+			 		End
+			 		<div class='panel-lead'>02-Sep-2024, 2:49:31 pm</div>
+				</div>
+			</div>
+			<div class='col s2'>
+				<div class='card-panel r'>
+					Time Taken
+					<div class='panel-lead'>608,381ms</div>
+				</div>
+			</div>
+			<div class='col s4'>
+				<div class='card-panel environment'>
+					<span class='right label cyan white-text'>Environment</span><p>&nbsp;</p>
+					
+					<table>
+						<tr>
+							<th>Name</th>
+							<th>Value</th>
+						</tr>
+							<tr>
+								<td>Organization</td>
+								<td>Audree Infotech Pvt Ltd</td>
+							</tr>
+							<tr>
+								<td>Environment</td>
+								<td>QA</td>
+							</tr>
+							<tr>
+								<td>Tester</td>
+								<td>Sharuk Komminapalli</td>
+							</tr>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- dashboard view --><!-- testrunner-logs view -->
+		</div>
+		<!-- container -->
+
+		<script>
+			var statusGroup = {
+				passParent: 1,
+				failParent: 19,
+				fatalParent: 0,
+				errorParent: 0,
+				warningParent: 0,
+				skipParent: 0,
+				exceptionsParent: 19,
+				
+				passChild: 10,
+				failChild: 19,
+				fatalChild: 0,
+				errorChild: 0,
+				warningChild: 0,
+				skipChild: 0,
+				infoChild: 29,
+				exceptionsChild: 19,
+				
+				passGrandChild: 0,
+				failGrandChild: 0,
+				fatalGrandChild: 0,
+				errorGrandChild: 0,
+				warningGrandChild: 0,
+				skipGrandChild: 0,
+				infoGrandChild: 0,
+				exceptionsGrandChild: 0,
+			};
+		</script>
+
+		<script src='https://cdn.rawgit.com/anshooarora/extentreports-java/9fa70d0ed9c34a8ed445ceee3494d3d7de7f8918/dist/js/extent.js' type='text/javascript'></script>
+
+		
+	</body>
+	
+</html>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [CombinedSuite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="EquipOrInstNameTest_Create(failed)">
+    <classes>
+      <class name="com.audree.infotech.pwo2.tests.masters.EquipOrInstName">
+        <methods>
+          <include name="Create"/>
+          <include name="initializeExtentTest"/>
+          <include name="EndReport"/>
+          <include name="setUp"/>
+          <include name="suiteSetUp"/>
+        </methods>
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.EquipOrInstName -->
+    </classes>
+  </test> <!-- EquipOrInstNameTest_Create(failed) -->
+</suite> <!-- Failed suite [CombinedSuite] -->
