@@ -32,7 +32,7 @@ public class MaterialNameTest extends BaseTest {
 	@Test
 	public void Create() {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			materialNamePom.create(excelData.get("MaterialName"));
 			// Add assertion here to verify creation
 		} catch (Exception e) {

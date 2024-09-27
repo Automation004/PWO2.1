@@ -126,9 +126,6 @@ public class EquipOrInstName_pom extends CommonData {
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");
 
-			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
-
 			EsigantureActions();
 
 		} catch (Exception e) {

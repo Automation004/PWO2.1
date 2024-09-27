@@ -34,7 +34,7 @@ public class TypeOfWork extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			typeOfWorkPom.create(excelData.get("TypeOfWork"));
 		} catch (Exception e) {
 			System.out.println(e);

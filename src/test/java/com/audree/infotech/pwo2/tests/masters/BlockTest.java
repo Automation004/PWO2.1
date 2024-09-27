@@ -11,13 +11,15 @@ public class BlockTest extends BaseTest {
 	Map<String, String> excelData = new HashMap<>();
 
 	@BeforeClass
-	public void setUp() throws Exception {
+	public void setUp() throws Exception
+	{
 		blockPom = new BlockPom(driver, test, pro);
 		// Pre-Load all required data from Excel
 		// Read the starting and ending rows from the properties file
 		int startRow = Integer.parseInt(pro.getProperty("startRow"));
 		int endRow = Integer.parseInt(pro.getProperty("endRow"));
-		for (int i = startRow; i <= endRow; i++) {
+		for (int i = startRow; i <= endRow; i++)
+		{
 			excelData.put("Block", xls.getCellData("MasterData", "Block", i));
 			excelData.put("BlockUpdate", xls.getCellData("MasterData", "BlockUpdate", i));
 			
@@ -31,7 +33,7 @@ public class BlockTest extends BaseTest {
 	@Test
 	public void Create() throws Throwable {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			blockPom.create(excelData.get("Block"));
 		} catch (Exception e) {
 			System.out.println(e);

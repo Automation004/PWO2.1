@@ -35,7 +35,7 @@ public class RoomName extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			roomNamePom.create(excelData.get("RoomName"));
 		} catch (Exception e) {
 			e.printStackTrace(); // This will give you more details about the exception

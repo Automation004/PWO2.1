@@ -1,0 +1,15 @@
+<suite name="WorkUnderClosureSuite">
+	<test name="WorkUnderClosureTest">
+		<classes>
+			<class
+				name="com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure">
+				<methods>
+					<!-- Include only the 'submittingRecord' method -->
+					<include name="submittingRecord" />
+					<!-- Exclude the 'savingRecord' method -->
+					<Exclude name="savingRecord" />
+				</methods>
+			</class>
+		</classes>
+	</test>
+</suite>

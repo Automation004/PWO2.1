@@ -1,13 +1,10 @@
 package com.audree.infotech.pwo2.pages.masters;
-
 import java.util.Properties;
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-
 import com.audree.infotech.pwo2.utils.CommonData;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;

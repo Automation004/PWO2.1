@@ -38,7 +38,7 @@ public class EquipOrInstId extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			equipOrInstIdPOM.create(excelData.get("EquipOrInstNameUpdate"), excelData.get("BlockUpdate"),
 					excelData.get("RoomIdUpdate"), excelData.get("EquipOrInstID"), excelData.get("ObjectiveType"),
 					excelData.get("RoomNameUpdate"));
@@ -50,7 +50,6 @@ public class EquipOrInstId extends BaseTest {
 	@Test
 	public void Update() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
 			equipOrInstIdPOM.update(excelData.get("EquipOrInstNameUpdate"), excelData.get("EquipOrInstIdUpdate"));
 		} catch (Exception e) {
 			System.out.println(e);

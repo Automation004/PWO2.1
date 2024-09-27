@@ -57,7 +57,7 @@ public class MaterialCodePom extends CommonData {
 			test.log(Status.INFO, "Navigating to Master section");
 			a.moveToElement(masterClick).perform();
 			test.log(Status.PASS, "Master section clicked successfully");
-			
+
 			test.log(Status.INFO, "Clicking on Material Code");
 			materialCodeClick.click();
 			test.log(Status.PASS, "Material Code clicked successfully");
@@ -71,7 +71,8 @@ public class MaterialCodePom extends CommonData {
 			test.log(Status.PASS, "Added the form without giving data");
 
 			// Verifying Validation Message
-			verifyValidationMessage(materialNameValidationMessage, pro.getProperty("MaterialNameValidationMessageDropdown"));
+			verifyValidationMessage(materialNameValidationMessage,
+					pro.getProperty("MaterialNameValidationMessageDropdown"));
 
 			// Verifying Validation Message
 			verifyValidationMessage(materialCodeValidationMessage, pro.getProperty("MaterialCode_ValidationMessage"));
@@ -128,6 +129,7 @@ public class MaterialCodePom extends CommonData {
 			test.log(Status.PASS, "Edit button clicked");
 
 			test.log(Status.INFO, "Clearing existing data in Material Code field");
+			Thread.sleep(500);
 			enterDataMaterialCode.clear();
 			test.log(Status.PASS, "Existing data cleared");
 
@@ -145,6 +147,7 @@ public class MaterialCodePom extends CommonData {
 
 			noButton();
 			test.log(Status.PASS, "No button clicked");
+			Thread.sleep(1000);
 
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");

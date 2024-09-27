@@ -10,10 +10,8 @@ import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Properties;
-import java.util.Set;
 import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.By;
@@ -29,6 +27,7 @@ import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
+import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
@@ -78,8 +77,8 @@ public class BaseTest {
 			reporter.config().setEncoding("utf-8");
 			reporter.config().setReportName("Automation Test Result");
 			reporter.config().setTheme(Theme.STANDARD);
-			reporter.config().setDocumentTitle("WMPS 2.0"); // Tile of report
-			reporter.config().setReportName("WMPS 2.0"); // name of the report
+			reporter.config().setDocumentTitle("PWO 2.1"); // Tile of report
+			reporter.config().setReportName("PWO 2.1"); // name of the report
 
 			extent = new ExtentReports();
 			extent.attachReporter(reporter);
@@ -109,6 +108,12 @@ public class BaseTest {
 		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
 		driver.findElement(By.xpath("//input[@placeholder='Password']")).sendKeys(Password);
 		driver.findElement(By.xpath("//button[normalize-space()='Login']")).click();
+		boolean terminationMessage = driver.findElement(By.xpath("(//button[@id='BtnWApp'])[1]")).isDisplayed();
+		if (terminationMessage) {
+			driver.findElement(By.xpath("(//button[@id='BtnWApp'])[1]")).click();
+			System.out.println(terminationMessage);
+		}
+		Thread.sleep(1500);
 	}
 
 	// @AfterMethod()
@@ -175,43 +180,6 @@ public class BaseTest {
 	// Test.log(Status.PASS, "User Clicked on Yes button");
 	// Thread.sleep(3000);
 	// }
-
-	public void Logout() throws Exception {
-		// Logout
-		// Test.log(Status.INFO, "System should display QMS Spectrum dashboard screen");
-		driver.findElement(By.xpath("//*[@id='navbarDropdown1']")).click();
-		// Test.log(Status.PASS, "Profile Clicked");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//a[contains(.,'Quit')]")).click();
-		// Test.log(Status.PASS, "Quit Clicked");
-		Thread.sleep(3000);
-		// Test.log(Status.INFO, "System should display QMS Spectrum dashboard screen");
-		driver.findElement(By.xpath("//a[contains(.,'Yes')]")).click();
-		Thread.sleep(3000);
-		// Test.log(Status.PASS, "yes Clicked");
-		driver.findElement(By.xpath("//*[@id='navbarDropdown1']")).click();
-		// Test.log(Status.PASS, "Profile Clicked");
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//a[contains(.,'Logout')]")).click();
-		// Test.log(Status.PASS, "Logout Clicked");
-		Thread.sleep(3000);
-		// Test.log(Status.INFO, "System should display Welcome to QMS Spectrum login
-		// page");
-		driver.findElement(By.xpath("//a[contains(.,'Yes')]")).click();
-		// Test.log(Status.INFO, "Yes Clicked and displayed login page");
-		Thread.sleep(3000);
-	}
-
-	public void Disable() throws Exception {
-		driver.findElement(By.xpath("(//*[@title=\"Click to Edit\"])[1]")).click(); // Edit
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//*[@formcontrolname=\"Comments\"]")).sendKeys(pro.getProperty("Comments"));// comments
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//*[@type=\"checkbox\"]")).click(); // checkbox
-		Thread.sleep(3000);
-		driver.findElement(By.xpath("//*[@title=\"Click to Update\"]")).click(); // Update
-		Thread.sleep(3000);
-	}
 
 	public WebElement waitForWebElementToAppear(WebElement findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
@@ -309,20 +277,7 @@ public class BaseTest {
 		Thread.sleep(1000);
 	}
 
-	/*******************************************/
-	public void Close_Opened_File() throws Exception {
-		Set<String> handles = driver.getWindowHandles();
-		Iterator<String> it = handles.iterator();
-		String parent = it.next();
-		String child = it.next();
-		driver.switchTo().window(child);
-		driver.close();
-		driver.switchTo().window(parent);
-		Thread.sleep(2000);
-		JavascriptExecutor jj = (JavascriptExecutor) driver;
-		jj.executeScript("window.scrollTo(0,1000)", "");
-		Thread.sleep(2000);
-	}
+	// *******************************************/
 
 	public void Password(String Password) throws Exception {
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
@@ -451,261 +406,6 @@ public class BaseTest {
 		Thread.sleep(3000);// (Hima)
 	}
 
-	public void Enable(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color0 = driver.findElement(By.xpath("(//*[@title='Edit'])[1]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color0);
-		driver.findElement(By.xpath("(//*[@title='Edit'])[1]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color1 = driver
-				.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"))
-				.sendKeys("Enable_Comment");
-		Thread.sleep(3000);
-
-		WebElement CheckBox = driver.findElement(By.xpath("//*[@type='checkbox']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", CheckBox);
-		driver.findElement(By.xpath("//*[@type='checkbox']")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color5 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color5);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color6 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color6);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);// (Hima)
-	}
-
-	public void Update(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver
-				.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"))
-				.sendKeys("Update_Comment");
-		Thread.sleep(1000);
-
-		WebElement Color2 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(1000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(1000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(1000);
-
-		WebElement Color5 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color5);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color6 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color6);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(1000);// (Hima)
-	}
-
-	public void Submit_E_Signature(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color2 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color5 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color5);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color6 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color6);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);// (Hima)
-	}
-
-	public void E_Signature(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);
-	}
-
-	public void Save(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//button[contains(.,'Submit')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//button[contains(.,'Submit')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);
-	}
-
-	public void E_Signature_Masters(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//*[@type='submit']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//*[@type='submit']")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);
-	}
-
-	public void E_Signature1(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty("Password"));
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit'  or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit'  or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);
-	}
-
-	public void E_Signature2(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty("Password"));
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("(//*[@type='submit'])[2]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("(//*[@type='submit'])[2]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);
-	}
-
 	public void scrollPagedownWithActions(WebElement element) throws InterruptedException {
 		Actions actions = new Actions(driver);
 		actions.moveToElement(element);
@@ -758,5 +458,10 @@ public class BaseTest {
 			}
 		}
 		return false;
+	}
+
+	public void onTestSkipped(ITestResult result) {
+		// TODO Auto-generated method stub
+
 	}
 }

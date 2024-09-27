@@ -100,7 +100,7 @@ public class BlockPom extends CommonData {
 		test.log(Status.PASS, "No button clicked");
 		submitButton();
 		test.log(Status.PASS, "Submit button clicked again");
-		
+
 		EsigantureActions();
 	}
 
@@ -114,11 +114,9 @@ public class BlockPom extends CommonData {
 			editButton();
 			test.log(Status.PASS, "Edit button clicked");
 
-			test.log(Status.INFO, "Clearing existing data in Block field");
-			enterDataBlock.clear();
-			test.log(Status.PASS, "Existing data cleared");
-
 			test.log(Status.INFO, "Entering updated data in Block field");
+			Thread.sleep(1000);
+			enterDataBlock.clear();
 			enterDataBlock.sendKeys(BlockUpdate);
 			test.log(Status.PASS, "Updated data entered successfully with: " + BlockUpdate);
 

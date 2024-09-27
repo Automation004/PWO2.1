@@ -4,8 +4,6 @@
 
 	<test name="EquipOrInstName Test">
 		<classes>
-			<!-- Include the class from the package
-			com.audree.infotech.pwo2.tests.masters -->
 			<class name="com.audree.infotech.pwo2.tests.masters.EquipOrInstName">
 				<!-- Specify the methods you want to run -->
 				<methods>
@@ -15,5 +13,4 @@
 			</class>
 		</classes>
 	</test>
-
 </suite>

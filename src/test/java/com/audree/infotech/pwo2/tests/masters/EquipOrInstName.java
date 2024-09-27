@@ -33,14 +33,14 @@ public class EquipOrInstName extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			equipNamePOM.create(excelData.get("EquipOrInstName"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	
+	@Test
 	public void Update() throws Exception {
 		try {
 			equipNamePOM.update(excelData.get("EquipOrInstName"), excelData.get("EquipOrInstNameUpdate"));

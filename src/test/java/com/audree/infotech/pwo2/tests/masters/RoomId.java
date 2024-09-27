@@ -35,7 +35,7 @@ public class RoomId extends BaseTest {
     @Test
     public void Create() throws Exception {
         try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
             roomIdPom.Create(excelData.get("RoomNameUpdate"), excelData.get("RoomId"), excelData.get("BlockDropdown"), excelData.get("Location"));
         } catch (Exception e) {
             System.out.println(e);

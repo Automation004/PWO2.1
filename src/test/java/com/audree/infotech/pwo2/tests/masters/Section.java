@@ -43,7 +43,7 @@ public class Section extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			sectionPom.create(excelData.get("Section"));
 		} catch (Exception e) {
 			System.out.println(e);

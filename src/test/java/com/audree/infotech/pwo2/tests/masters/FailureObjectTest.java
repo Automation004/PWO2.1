@@ -34,7 +34,7 @@ public class FailureObjectTest extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			failureObjectPom.create(excelData.get("FailureObject"));
 		} catch (Exception e) {
 			System.out.println(e);

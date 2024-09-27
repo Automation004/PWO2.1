@@ -109,6 +109,7 @@ public class EquipOrInstIdPom extends CommonData {
 			test.log(Status.PASS, "Data entered in RoomId field successfully: " + RoomIdUpdate);
 
 			test.log(Status.INFO, "Adding the form");
+			Thread.sleep(500);
 			Add_Button();
 			test.log(Status.PASS, "added button clicked");
 
