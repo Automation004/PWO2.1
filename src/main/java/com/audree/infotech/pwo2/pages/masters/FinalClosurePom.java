@@ -66,6 +66,7 @@ public class FinalClosurePom extends CommonData {
 	// Method to enter comments
 	public void interimReleaseCheckBox() throws Exception {
 		test.log(Status.INFO, "checking Interim release Check Box:");
+		Thread.sleep(500);
 		checkBox();
 		test.log(Status.INFO, "checking Interim release Check Box:");
 	}

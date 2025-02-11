@@ -40,19 +40,19 @@ public class EquipOrInstId extends BaseTest {
 		try {
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			equipOrInstIdPOM.create(excelData.get("EquipOrInstNameUpdate"), excelData.get("BlockUpdate"),
-					excelData.get("RoomIdUpdate"), excelData.get("EquipOrInstID"), excelData.get("ObjectiveType"),
+					excelData.get("RoomIdUpdate"), excelData.get("EquipOrInstIdUpdate"), excelData.get("ObjectiveType"),
 					excelData.get("RoomNameUpdate"));
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	@Test
-	public void Update() throws Exception {
-		try {
-			equipOrInstIdPOM.update(excelData.get("EquipOrInstNameUpdate"), excelData.get("EquipOrInstIdUpdate"));
-		} catch (Exception e) {
-			System.out.println(e);
-		}
-	}
+//	@Test
+//	public void Update() throws Exception {
+//		try {
+//			equipOrInstIdPOM.update(excelData.get("EquipOrInstNameUpdate"), excelData.get("EquipOrInstIdUpdate"));
+//		} catch (Exception e) {
+//			System.out.println(e);
+//		}
+//	}
 }

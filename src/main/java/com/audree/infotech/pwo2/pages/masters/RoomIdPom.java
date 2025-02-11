@@ -37,13 +37,13 @@ public class RoomIdPom extends CommonData {
 	@FindBy(xpath = "//input[@formcontrolname='name']")
 	protected WebElement enterDataRoomName;
 
-	@FindBy(xpath = "//select[@formcontrolname='roomName']")
+	@FindBy(xpath = "//input[@formcontrolname='roomName']")
 	protected WebElement roomNameDropdown;
 
 	@FindBy(xpath = "//input[@formcontrolname='number']")
 	protected WebElement roomId;
 
-	@FindBy(xpath = "//select[@formcontrolname='block']")
+	@FindBy(xpath = "//ng-select[@formcontrolname='block']")
 	protected WebElement blockDropdown;
 
 	@FindBy(xpath = "//input[@formcontrolname='location']")
@@ -52,7 +52,7 @@ public class RoomIdPom extends CommonData {
 	@FindBy(css = "body app-root div[class='modal-body'] div div:nth-child(2)")
 	private WebElement validationMessage;
 
-	public void Create(String RoomNameUpdate, String RoomId, String BlockDropdown, String Location) throws Exception {
+	public void Create(String RoomNameUpdate, String RoomId, String BlockDropdown, String LocationUpdate) throws Exception {
 		try {
 			// Click on the Masters section and wait for the dropdown to expand
 			test.log(Status.INFO, "Navigating to Master section");
@@ -72,21 +72,21 @@ public class RoomIdPom extends CommonData {
 			test.log(Status.PASS, "added button clicked");
 
 			test.log(Status.INFO, "Clicking & Giving data on Room Name Dropdown");
-			roomNameDropdown.click();
-			roomNameDropdown.sendKeys(RoomNameUpdate, Keys.ENTER);
+			roomNameDropdown.sendKeys(RoomNameUpdate);
 			test.log(Status.INFO, "Clicked & Given data to Room Name Dropdown: " + RoomNameUpdate);
 
 			test.log(Status.INFO, "Giving data to Room Id");
-			roomId.sendKeys(RoomId);
+			roomId.sendKeys(RoomId);Thread.sleep(500);
 			test.log(Status.INFO, "Given data on Room Id");
 
 			test.log(Status.INFO, "Clicking & Giving data to Block Dropdown");
 			blockDropdown.click();
-			blockDropdown.sendKeys(BlockDropdown, Keys.ENTER);
+			Thread.sleep(500);
+			textBoxThree.sendKeys(BlockDropdown,Keys.ENTER);
 			test.log(Status.INFO, "Clicked & Given data to Block Dropdown: " + BlockDropdown);
 
 			test.log(Status.INFO, "Giving data on location");
-			location.sendKeys(Location);
+			location.sendKeys(LocationUpdate);
 			test.log(Status.INFO, "Given data to location");
 
 			test.log(Status.INFO, "Again Adding the form");

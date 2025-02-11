@@ -31,6 +31,9 @@ public class ImpactAssessmentPom extends CommonData {
 
 	@FindBy(xpath = "(//a[@class='work-order-link'])[1]")
 	private WebElement workOrderIdClick;
+	
+	@FindBy(xpath = "//a[@class='work-order-link badge1 boldF']")
+	private WebElement impactWorkOrderIdClick;
 
 	@FindBy(xpath = "//input[@formcontrolname='comments']")
 	WebElement commentsFeild;

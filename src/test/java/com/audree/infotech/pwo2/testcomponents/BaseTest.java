@@ -6,6 +6,7 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -29,9 +30,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeSuite;
 
+import com.audree.infotech.pwo2.pages.masters.WorkOrderInitiationPom;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -45,7 +46,7 @@ public class BaseTest {
 	ExtentHtmlReporter Report;
 	public static ExtentReports extent;
 	public ExtentTest test;
-	protected Properties pro;
+	public Properties pro;
 	public Robot r;
 	public WebDriverWait wait;// globally declared
 
@@ -53,7 +54,7 @@ public class BaseTest {
 			System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
 	@BeforeSuite(alwaysRun = true)
-	public void suiteSetUp() throws IOException {
+	public void suiteSetUp() throws Exception {
 		if (driver == null) {
 			pro = new Properties();
 			FileInputStream ip = new FileInputStream(
@@ -89,7 +90,7 @@ public class BaseTest {
 		return extent;
 	}
 
-	@BeforeClass(alwaysRun = true)
+	@BeforeSuite(alwaysRun = true)
 	public void initializeExtentTest() {
 		// Get the singleton instance of ExtentReports
 		extent = getReportObject(this.getClass().getSimpleName());
@@ -165,22 +166,6 @@ public class BaseTest {
 		return destination;
 	}
 
-	// public void Quit() throws Exception {
-	// WebElement icon = driver.findElement(By.xpath("//*[@class='avatarIcon']"));
-	// // Actions a = new
-	// //
-	// Actions(driver);//*************************************************************************
-	// // a.doubleClick(icon).perform();//***************************Double Click
-	// icon.click();
-	// Thread.sleep(3000);
-	// driver.findElement(By.xpath("//a[contains(.,' Quit')]")).click(); // Quit
-	// Test.log(Status.PASS, "User Clicked on Quit button");
-	// Thread.sleep(3000);
-	// driver.findElement(By.xpath("//a[contains(text(),'Yes')]")).click(); // Yes
-	// Test.log(Status.PASS, "User Clicked on Yes button");
-	// Thread.sleep(3000);
-	// }
-
 	public WebElement waitForWebElementToAppear(WebElement findBy) {
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
 		WebElement isExistes = wait.until(ExpectedConditions.visibilityOf(findBy));
@@ -226,23 +211,28 @@ public class BaseTest {
 	}
 
 	public void UploadFile(String path) throws Exception {
-
+		// Selenium can handle most interactions with web elements in a browser.
+		// However, it cannot interact directly with file upload dialogs because they
+		// are part of the operating system, not the web page.
+		// This is where Java's Robot class can be used to mimic user interactions like
+		// file uploads by handling OS-level dialogs, which Selenium alone can't
+		// manipulate.
 		r = new Robot();
-		r.delay(3000);
+		r.delay(1500);
 		// put path to file in a clipboard
 		StringSelection s = new StringSelection(path);
 		Toolkit.getDefaultToolkit().getSystemClipboard().setContents(s, null);
 		// ctrl+V press
-		r.keyPress(KeyEvent.VK_CONTROL);// press on ctrl key
-		r.keyPress(KeyEvent.VK_V);// press on ctrl key
-		r.delay(3000);
+		r.keyPress(KeyEvent.VK_CONTROL);// press on ctrl key+copy
+		r.keyPress(KeyEvent.VK_V);// press on ctrl key+paste
+		r.delay(1500);
 		r.keyRelease(KeyEvent.VK_CONTROL);
 		r.keyRelease(KeyEvent.VK_V);
-		r.delay(3000);
+		r.delay(1000);
 		// Enter
 		r.keyPress(KeyEvent.VK_ENTER);
 		r.keyRelease(KeyEvent.VK_ENTER);
-		r.delay(6000);
+		r.delay(500);
 		System.out.println("uploaded Successfully");
 	}
 
@@ -251,7 +241,6 @@ public class BaseTest {
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 2px solid black;');", Color);
 		WebElement AttachFile = driver.findElement(By.xpath("//*[@type='file']"));
-		Thread.sleep(3000);
 		Actions action = new Actions(driver);
 		action.click(AttachFile).perform();
 		Thread.sleep(3000);
@@ -288,122 +277,6 @@ public class BaseTest {
 				.sendKeys(pro.getProperty(Password));
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 
-	}
-
-	public void WMPS_Login(String username, String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-		WebElement Color1 = driver.findElement(By.xpath("//*[@formcontrolname='LoginId']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//*[@formcontrolname='LoginId']")).sendKeys(pro.getProperty(username));
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		WebElement Color2 = driver.findElement(By.xpath("//*[@formcontrolname='Password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//*[@formcontrolname='Password']")).sendKeys(pro.getProperty(Password));
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		WebElement Color3 = driver.findElement(By.xpath("(//button[text()='Login'])"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("(//button[text()='Login'])")).click();
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		List<WebElement> termination = driver.findElements(By.xpath("//*[@id='BtnWApp']"));
-		if (!termination.isEmpty()) {
-			termination.get(0).click();
-		}
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		Thread.sleep(1000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//*[contains(text(),'WMPS - ')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		try {
-			driver.findElement(By.xpath("//*[contains(text(),'WMPS - ')]")).click();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		// ********************************************************************************************************************************
-
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-	}
-
-	public void WMPS_Login_Release(String username, String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color1 = driver.findElement(By.xpath("//*[@formcontrolname='LoginId']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//*[@formcontrolname='LoginId']")).sendKeys(pro.getProperty(username));
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		// Thread.sleep(2000);
-
-		WebElement Color2 = driver.findElement(By.xpath("//*[@formcontrolname='Password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath("//*[@formcontrolname='Password']")).sendKeys(pro.getProperty(Password));
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-		// Thread.sleep(2000);
-
-		WebElement Color3 = driver.findElement(By.xpath("(//button[text()='Login'])"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("(//button[text()='Login'])")).click();
-
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-		// Thread.sleep(2000);
-
-		List<WebElement> termination = driver.findElements(By.xpath("//*[@id='BtnWApp']"));
-		if (!termination.isEmpty()) {
-			termination.get(0).click();
-		}
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
-
-	}
-
-	public void Disable(String Password) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-
-		WebElement Color0 = driver.findElement(By.xpath("(//*[@title='Edit'])[1]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color0);
-		driver.findElement(By.xpath("(//*[@title='Edit'])[1]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color1 = driver
-				.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color1);
-		driver.findElement(By.xpath("//*[@formcontrolname='comments' or @formcontrolname='Comments']"))
-				.sendKeys("Disable_Comment");
-		Thread.sleep(3000);
-
-		WebElement CheckBox = driver.findElement(By.xpath("//*[@type='checkbox']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", CheckBox);
-		driver.findElement(By.xpath("//*[@type='checkbox']")).click();
-		Thread.sleep(3000);
-
-		WebElement Color2 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color2);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit'  or @ title='Click to update' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color3 = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color3);
-		driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")).click();
-		Thread.sleep(3000);
-
-		WebElement Color4 = driver.findElement(By.xpath("//input[@type='password']"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color4);
-		driver.findElement(By.xpath("//input[@type='password']")).sendKeys(pro.getProperty(Password));
-		Thread.sleep(3000);
-
-		WebElement Color5 = driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color5);
-		driver.findElement(By.xpath(
-				"//*[@type='submit' or @value='Log In' or @title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"))
-				.click();
-		Thread.sleep(3000);
-
-		WebElement Color6 = driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]"));
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color6);
-		driver.findElement(By.xpath("//*[contains(text(),'OK') or contains(text(),'Ok')]")).click();
-		Thread.sleep(3000);// (Hima)
 	}
 
 	public void scrollPagedownWithActions(WebElement element) throws InterruptedException {

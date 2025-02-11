@@ -42,8 +42,14 @@ public class WorkUnderClosurePom extends CommonData {
 	@FindBy(xpath = "//input[@formcontrolname='failureReason']")
 	WebElement reasonForFailureInput;
 
-	@FindBy(xpath = "//div[@class='ng-select-container']//input[@type='text']")
+	@FindBy(xpath = "//input[@formcontrolname='materialCodeId']")
 	WebElement materialCodeDropdown;
+
+	@FindBy(xpath = "//input[@formcontrolname='materialName']")
+	WebElement materialNameDropdown;
+
+	@FindBy(xpath = "//input[@formcontrolname='UOM']")
+	WebElement uomInput;
 
 	@FindBy(xpath = "//input[@formcontrolname='quantity']")
 	WebElement quantityInput;
@@ -97,10 +103,24 @@ public class WorkUnderClosurePom extends CommonData {
 
 	// Method to select Material Code option
 	public void selectMaterialCode(String materialCode) throws InterruptedException {
-		test.log(Status.INFO, "Selecting Material Code from dropdown.");
-		materialCodeDropdown.click();Thread.sleep(1000);
-		materialCodeDropdown.sendKeys(materialCode,Keys.ENTER);
-		test.log(Status.PASS, "Material Code selected.");
+		test.log(Status.INFO, "Selecting Material Code");
+		materialCodeDropdown.sendKeys(materialCode);
+		test.log(Status.PASS, "Material Code selected." + materialCode);
+	}
+
+	// Method to select Material Code option
+	public void selectMaterialName(String materialName) throws InterruptedException {
+		test.log(Status.INFO, "Selecting Material Name");
+		materialNameDropdown.sendKeys(materialName);
+		Thread.sleep(1000);
+		test.log(Status.PASS, "Material Name selected." + materialName);
+	}
+
+	public void enterUom(String Uom) {
+		test.log(Status.INFO, "Entering Quantity: " + Uom);
+		uomInput.clear();
+		uomInput.sendKeys(Uom);
+		test.log(Status.PASS, "Entered Quantity: " + Uom);
 	}
 
 	// Method to enter Quantity

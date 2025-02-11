@@ -2,6 +2,7 @@ package com.audree.infotech.pwo2.pages.masters;
 
 import java.util.Properties;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -29,22 +30,22 @@ public class EquipOrInstIdPom extends CommonData {
 	@FindBy(xpath = "//a[normalize-space()='Equip/Inst ID']")
 	protected WebElement equipOrInstIdClick;
 
-	@FindBy(xpath = "//select[@formcontrolname='equipmentId']")
+	@FindBy(xpath = "//input[@formcontrolname='equipmentId']")
 	protected WebElement equipmentNameDropdown;
 
 	@FindBy(xpath = "//input[@formcontrolname='number']")
 	protected WebElement equipOrInstID;
 
-	@FindBy(xpath = "//input[@formcontrolname='objectiveType']")
+	@FindBy(xpath = "//ng-select[@formcontrolname='objectiveTypeId']")
 	protected WebElement objectiveType;
 
-	@FindBy(xpath = "//select[@formcontrolname='blockId']")
+	@FindBy(xpath = "//ng-select[@formcontrolname='blockId']")
 	protected WebElement blockDropdown;
 
-	@FindBy(xpath = "//select[@formcontrolname='roomId']")
+	@FindBy(xpath = "//ng-select[@formcontrolname='roomId']")
 	protected WebElement roomName;
 
-	@FindBy(xpath = "//select[@formcontrolname='roomBlockId']")
+	@FindBy(xpath = "//ng-select[@formcontrolname='roomBlockId']")
 	protected WebElement roomIdDropdown;
 
 	@FindBy(xpath = "//button[normalize-space()='Create']")
@@ -63,7 +64,7 @@ public class EquipOrInstIdPom extends CommonData {
 			test.log(Status.INFO, "Navigating to Master section");
 			a.moveToElement(masterClick).perform();
 			test.log(Status.PASS, "Master section clicked successfully");
-			
+
 			test.log(Status.INFO, "Clicking on Equip/Inst Name");
 			equipOrInstIdClick.click();
 			test.log(Status.PASS, "Equip/Inst Name clicked successfully");
@@ -81,8 +82,11 @@ public class EquipOrInstIdPom extends CommonData {
 			// pro.getProperty("Equip/Inst_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Equip/Inst Name dropdown");
-			equipmentNameDropdown.click();
+			Thread.sleep(400);
 			equipmentNameDropdown.sendKeys(EquipOrInstNameUpdate);
+//			equipmentNameDropdown.sendKeys("Filtration instrument");
+
+			Thread.sleep(400);
 			test.log(Status.PASS, "Data entered in Equip/Inst Name field successfully with: " + EquipOrInstNameUpdate);
 
 			test.log(Status.INFO, "entering data to Equip/InstID field");
@@ -90,26 +94,27 @@ public class EquipOrInstIdPom extends CommonData {
 			test.log(Status.PASS, "entered data to Equip/InstID field");
 
 			test.log(Status.INFO, "entering data to Objective Type field");
-			objectiveType.sendKeys(ObjectiveType);
+			objectiveType.click();
+			textBoxThree.sendKeys(ObjectiveType,Keys.ENTER);
 			test.log(Status.PASS, "entered data to Equip/InstID field");
 
 			test.log(Status.INFO, "Entering data in Block Name dropdown");
 			blockDropdown.click();
-			blockDropdown.sendKeys(BlockUpdate);
+			textBoxFour.sendKeys(BlockUpdate,Keys.ENTER);
 			test.log(Status.PASS, "Data entered in Block Name field successfully with: " + BlockUpdate);
 
 			test.log(Status.INFO, "Entering data in Room Name dropdown");
 			roomName.click();
-			roomName.sendKeys(RoomNameUpdate);
+			textBoxFive.sendKeys(RoomNameUpdate,Keys.ENTER);
 			test.log(Status.PASS, "Data entered in RoomId field successfully: " + RoomNameUpdate);
 
 			test.log(Status.INFO, "Entering data in RoomId dropdown");
 			roomIdDropdown.click();
-			roomIdDropdown.sendKeys(RoomIdUpdate);
+			textBoxSix.sendKeys(RoomIdUpdate, Keys.ENTER);
 			test.log(Status.PASS, "Data entered in RoomId field successfully: " + RoomIdUpdate);
 
 			test.log(Status.INFO, "Adding the form");
-			Thread.sleep(500);
+			Thread.sleep(1000);
 			Add_Button();
 			test.log(Status.PASS, "added button clicked");
 

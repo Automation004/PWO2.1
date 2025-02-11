@@ -15,7 +15,6 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.asserts.SoftAssert;
 
@@ -27,6 +26,7 @@ public class CommonData {
 	public WebDriverWait wait;// globally declared
 	private static ExtentTest test;
 	public static Properties pro;
+	protected String extractedWorkIdOrderValue; // Store work order ID globally
 
 	@SuppressWarnings("deprecation")
 	public CommonData(WebDriver driver, ExtentTest _test, Properties _pro)// constructor call
@@ -131,14 +131,35 @@ public class CommonData {
 		test.log(Status.PASS, "Yes button clicked");
 		password.sendKeys(pro.getProperty("Password"));
 		test.log(Status.PASS, "password given by user");
-		submitButton2();
+		try {
+			saveButton.click();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		try {
+			submitButton2();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		test.log(Status.PASS, "Submit button clicked again");
 		okButton();
 		test.log(Status.PASS, "OK button clicked");
 	}
 
 	public void submitEsigantureActions() throws Exception {
-		submitButton();
+		try {
+			documentClosure.click();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			submitButton();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		test.log(Status.PASS, "Submit button clicked");
 		yesButton();
 		test.log(Status.PASS, "Yes button clicked");
@@ -146,6 +167,7 @@ public class CommonData {
 		test.log(Status.PASS, "Given valid password");
 		submitButton2();
 		test.log(Status.PASS, "Submit button clicked again");
+		// workOrderInitiationPom.getWorkOrderId();
 		okButton();
 		test.log(Status.PASS, "OK button clicked");
 	}
@@ -154,7 +176,7 @@ public class CommonData {
 		test.log(Status.PASS, "Save button clicked");
 		yesButton();
 		test.log(Status.PASS, "Yes button clicked");
-		password.sendKeys(pro.getProperty("Password"));
+		password.sendKeys(pro.getProperty("Password2"));
 		test.log(Status.PASS, "password given by user");
 		submitButton3();
 		test.log(Status.PASS, "Submit button clicked");
@@ -165,13 +187,14 @@ public class CommonData {
 	public void firstSubmitEsigantureActionsForWUP() throws Exception {
 		yesButton();
 		test.log(Status.PASS, "Yes button clicked");
-		password.sendKeys(pro.getProperty("Password"));
+		password.sendKeys(pro.getProperty("Password2"));
 		test.log(Status.PASS, "password given by user");
 		submitButton3();
 		test.log(Status.PASS, "Submit button clicked");
 		okButton();
 		test.log(Status.PASS, "OK button clicked");
 	}
+
 	// Helper method to check if the element is present
 	public boolean isElementPresent(By locator) {
 		try {
@@ -340,6 +363,9 @@ public class CommonData {
 	// *********************************************************************************************************************
 	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Submit')])[3]")
 	public WebElement Submit_Text_03;
+	
+	@FindBy(how = How.XPATH, using = "(//button[contains(text(),' Document Closure ')])[1]")
+	public WebElement documentClosure;
 
 	// *********************************************************************************************************************
 	// *********************************************************************************************************************
@@ -981,6 +1007,15 @@ public class CommonData {
 
 	@FindBy(xpath = "(//input[@type='text'])[3]")
 	public WebElement textBoxThree;
+	
+	@FindBy(xpath = "(//input[@type='text'])[4]")
+	public WebElement textBoxFour;
+	
+	@FindBy(xpath = "(//input[@type='text'])[5]")
+	public WebElement textBoxFive;
+	
+	@FindBy(xpath = "(//input[@type='text'])[6]")
+	public WebElement textBoxSix;
 
 	public void textBoxOne(String x) throws Exception {
 		textBoxOne.click();
@@ -990,7 +1025,7 @@ public class CommonData {
 
 	public void textBoxTwo(String x) throws Exception {
 		textBoxTwo.click();
-		Thread.sleep(300);
+		Thread.sleep(500);
 		textBoxTwo.sendKeys(x, Keys.ENTER);
 	}
 

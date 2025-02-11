@@ -14,10 +14,6 @@ public class Section extends BaseTest {
 	public SectionPom sectionPom;
 	private Map<String, String> excelData = new HashMap<>();
 
-	public Section() {
-		this.excelData = new HashMap<>();
-	}
-
 	@BeforeMethod()
 	public void setUp() throws Exception {
 		try {
