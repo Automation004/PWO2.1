@@ -37,20 +37,28 @@ public class ImpactAssessmentByUserTest extends BaseTest {
 	public void impactAssessmentInitiation() throws Exception {
 		// Click "impact AssessmentPom"
 		try {
+			Thread.sleep(1000);
 			impactAssessmentPom.impactAssessmentActions();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		// Search for "equipment Id"
-		impactAssessmentPom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
+		impactAssessmentPom.searchWorkOrder(pro.getProperty("workOrderId"));
 		// Click on Word Order Id link
-		impactAssessmentPom.selectWorkOrder();
+		try {
+			impactAssessmentPom.selectWorkOrder();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	@Test
 	public void savingRecord() throws Exception {
 		try {
+			Thread.sleep(1000);
 			impactAssessmentInitiation();
+			Thread.sleep(1000);
 			impactAssessmentPom.radioButtonActions(); // Change according to our need
 			impactAssessmentPom.saveAction(); // Save the record
 			System.out.println("Record Saved Successfully");
@@ -62,6 +70,7 @@ public class ImpactAssessmentByUserTest extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
+			Thread.sleep(1000);
 			savingRecord();
 			impactAssessmentInitiation();
 			// Enter comments

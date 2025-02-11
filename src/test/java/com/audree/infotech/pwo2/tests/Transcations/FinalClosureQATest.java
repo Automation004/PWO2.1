@@ -41,11 +41,6 @@ public class FinalClosureQATest extends BaseTest {
 	}
 
 	public void finalClosuerAction() throws Exception {
-		try {
-			finalClosurePom.finalClosureTabClickActions();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		Thread.sleep(1000);
 		// Search for "equipment Id"
 		finalClosurePom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
@@ -55,7 +50,8 @@ public class FinalClosureQATest extends BaseTest {
 
 	public void savingRecord() throws Exception {
 		try {
-			finalClosurePom.interimReleaseCheckBox();
+			Thread.sleep(3000);
+//			finalClosurePom.interimReleaseCheckBox();
 			finalClosurePom.saveAction();
 			System.out.println("Record Saved Successfully");
 		} catch (Exception e) {
@@ -66,6 +62,7 @@ public class FinalClosureQATest extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
+			finalClosurePom.finalClosureTabClickActions();
 			finalClosuerAction();
 			savingRecord();
 			finalClosuerAction();

@@ -61,9 +61,12 @@ public class WorkOrderInitiationTest extends BaseTest {
 			} else {
 				System.out.print("Work Related To not done");
 			}
+			AttachFile();
+			UploadFile(System.getProperty("user.dir") + "\\UploadingFiles\\Equip_Inst Name (2).xlsx");
 			workOrderInitiationPom.natureOfWork(excelData.get("NatureOfWork"));
+			Thread.sleep(3000);
 			workOrderInitiationPom.descriptionOfWork(excelData.get("DescriptionOfWork"));
-
+			scrollPagedown();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
@@ -87,7 +90,6 @@ public class WorkOrderInitiationTest extends BaseTest {
 	@Test
 	public void saveRecord() throws Exception {
 		try {
-
 			workOrderInitiationPom.saveAction();
 			System.out.println("Record Saved Successfully");
 			Thread.sleep(1000);
@@ -101,12 +103,11 @@ public class WorkOrderInitiationTest extends BaseTest {
 	public void reInitiateRecord() throws Exception {
 		try {
 			workOrderInitiationPom.reinitiationWithActions(excelData.get("EquipOrInstIdUpdate"));
-			
 		} catch (Exception e) {
 			System.out.println("InitiatedTab method failed :" + e);
 		}
 	}
-	
+
 	public void initiatedTab() throws Exception {
 		try {
 			if (isEquipment) {

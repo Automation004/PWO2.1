@@ -35,7 +35,7 @@ public class InitialReviewByQA extends BaseTest {
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 
-			Login(pro.getProperty("QAReview"), pro.getProperty("Password"));
+			Login(pro.getProperty("QAReview"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 
 		}
@@ -51,6 +51,7 @@ public class InitialReviewByQA extends BaseTest {
 	@Test
 	public void savingRecord() throws Exception {
 		try {
+			Thread.sleep(500);
 			initiatialReviewByQaPom.saveAction();
 			System.out.println("Record Saved Successfully");
 		} catch (Exception e) {

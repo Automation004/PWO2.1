@@ -30,7 +30,7 @@ public class WorkUnderProgressTest extends BaseTest {
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 
-			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password"));
+			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 		}
 	}
@@ -49,24 +49,28 @@ public class WorkUnderProgressTest extends BaseTest {
 
 	@Test
 	public void WorkUnderProgressActivitySave() throws Exception {
+		Thread.sleep(1000);
 		// Enter activity and Detail of work and save
 		workUnderProgressPom.enterActivityAndSave(excelData.get("activity"));
 	}
 
 	@Test
 	public void WorkUnderProgressActivitySubmit() throws Exception {
+		Thread.sleep(1000);
 		// Enter activity and Detail of work and save
 		workUnderProgressPom.enterActivityAndSubmit(excelData.get("activity"));
 	}
 
 	@Test
 	public void WorkUnderProgressSave() throws Exception {
+		Thread.sleep(1000);
 		// Final save
 		workUnderProgressPom.saveAction(excelData.get("detailOfTrail"));
 	}
 
 	@Test
 	public	void WorkUnderProgressSubmit() throws Exception {
+		Thread.sleep(1000);
 		// Final submit
 		workUnderProgressPom.submitAction();
 	}

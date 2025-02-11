@@ -30,7 +30,7 @@ public class InitiatialReviewByQaPom extends CommonData {
 		this.pro = _pro;
 		PageFactory.initElements(driver, this);
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-		
+
 	}
 
 	@FindBy(xpath = "//div[contains(text(),'Initial Review')]")
@@ -58,6 +58,7 @@ public class InitiatialReviewByQaPom extends CommonData {
 		if (comments.getText().trim().isEmpty()) {
 			System.out.println("Need Commnets : " + comments.getText());
 			System.out.println(comments.getText());
+			comments.sendKeys(equipIdOrRoomId + " record initial reviewed by QA sucessfully");
 		} else {
 			comments.sendKeys(equipIdOrRoomId + " record initial reviewed by QA sucessfully");
 			System.out.println(comments.getText());
@@ -91,11 +92,12 @@ public class InitiatialReviewByQaPom extends CommonData {
 		returnButton();
 		// Check if the dropdown with formcontrolname 'returnTo' is present
 		if (isElementPresent(By.xpath("//select[@formcontrolname='returnTo']"))) {
-			returnToDropdown.click();
 			Thread.sleep(500);
+			returnToDropdown.click();
+			Thread.sleep(1000);
 			returnToDropdown.sendKeys("Initiator", Keys.ENTER);
 			test.log(Status.PASS, "Value selected from 'returnTo' dropdown");
-			returnComments.sendKeys("Returned to the : " + returnto);
+			returnComments.sendKeys("Returned to the : Initiator");
 		} else {
 			test.log(Status.INFO, "'EN Initial Receiver' dropdown not present, moving to the next step");
 		}

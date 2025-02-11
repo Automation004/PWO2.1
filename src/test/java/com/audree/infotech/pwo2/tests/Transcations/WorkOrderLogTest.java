@@ -1,28 +1,54 @@
 package com.audree.infotech.pwo2.tests.Transcations;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
-
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.tests.masters.WorkOrderLogPom;
 
-public final class WorkOrderLogTest extends BaseTest {
+public class WorkOrderLogTest extends BaseTest {
 
 	private WorkOrderLogPom workOrderLogPom;
+	Map<String, String> excelData = new HashMap<>();
+	private String fromDate;
+	private String toDate;
 
 	@BeforeClass
 	public void setup() throws Exception {
-		workOrderLogPom = new WorkOrderLogPom(driver, test); // Pass WebDriver and ExtentTest instances
+		// Initialize the WorkOrderLogPom Page Object with driver and test instances
+		workOrderLogPom = new WorkOrderLogPom(driver, test);
+
+		int startRow = Integer.parseInt(pro.getProperty("startRow"));
+		int endRow = Integer.parseInt(pro.getProperty("endRow"));
+		for (int i = startRow; i <= endRow; i++) {
+			excelData.put("Department", xls.getCellData("MasterData", "Department", i));
+			excelData.put("WorkRelatedTo", xls.getCellData("Initiator", "WorkRelatedTo", i));
+		}
+		fromDate = pro.getProperty("fromDate");
+		toDate = pro.getProperty("toDate");
+		
+		// Login to the application using the base method from BaseTest
 		Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
+
 	}
 
 	@Test
-	public void testWorkOrderLog() throws Exception {
+	public void testWorkOrderLog() throws Throwable {
+		// Navigating to Work Order Log page
 		workOrderLogPom.navigateToWorkOrderLog();
-		workOrderLogPom.selectInComboBox("information Technology");
-		workOrderLogPom.enterFromDate("2024-09-23");
-		workOrderLogPom.enterToDate("2024-09-24");
-		workOrderLogPom.selectEquipmentInstrument("Equipments/Instrument");
+
+		// Performing actions using the values read from properties
+		workOrderLogPom.selectInComboBox(excelData.get("Department"));
+		workOrderLogPom.enterFromDate(fromDate);Thread.sleep(500);
+		workOrderLogPom.enterToDate(toDate);
+		workOrderLogPom.selectWorkRelatedTo(excelData.get("WorkRelatedTo"));
+
+		// Submit the form
 		workOrderLogPom.clickGetButton();
+
+		// Scroll for visibility (optional)
 		workOrderLogPom.scrollDown();
 		workOrderLogPom.scrollUp();
 	}

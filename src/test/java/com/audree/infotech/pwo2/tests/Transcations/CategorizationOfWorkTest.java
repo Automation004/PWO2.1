@@ -35,30 +35,38 @@ public class CategorizationOfWorkTest extends BaseTest {
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 
-			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password"));
+			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 		}
 	}
 
 	public void impactAssessmentInitiation() throws Exception {
 		// Click "impact Assessment Pom"
+		Thread.sleep(1000);
 		try {
 			categorizationOfWorkPom.categorizationOfWorkActions();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		Thread.sleep(1000);
 		// Search for "equipment Id"
 		categorizationOfWorkPom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
+		Thread.sleep(1000);
 		// Click on Word Order Id link
-		categorizationOfWorkPom.selectWorkOrder();
+		try {
+			categorizationOfWorkPom.selectWorkOrder();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void savingRecord() throws Exception {
 		try {
+			Thread.sleep(1000);
 			categorizationOfWorkPom.setCategorizationOfWorkDropdown(excelData.get("CategorizationOfWork"));
 			categorizationOfWorkPom.setTypeOfQmsTool(excelData.get("TypeOfQMSTool"));
 			categorizationOfWorkPom.setQmsId(excelData.get("QMS ID"));
+			scrollPagedown();
+			Thread.sleep(1000);
 			categorizationOfWorkPom.saveAction(); // Save the record
 			Thread.sleep(1000);
 			scrollPagedown();
@@ -71,6 +79,7 @@ public class CategorizationOfWorkTest extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
+			Thread.sleep(1000);
 			impactAssessmentInitiation();
 			savingRecord();
 			impactAssessmentInitiation();

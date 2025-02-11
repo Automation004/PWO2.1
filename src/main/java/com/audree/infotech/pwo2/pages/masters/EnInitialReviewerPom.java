@@ -62,9 +62,9 @@ public class EnInitialReviewerPom extends CommonData {
 		test.log(Status.PASS, "Clicked on QA Returned tab.");
 	}
 
-	public void enterSearchText(String text) {
-		test.log(Status.INFO, "Entering text into Search box: " + text);
-		searchBox.sendKeys(text);
+	public void enterSearchText(String x) {
+		test.log(Status.INFO, "Entering text into Search box: " + extractedWorkIdOrderValue);
+		searchBox.sendKeys(x);
 		test.log(Status.PASS, "Entered text into Search box successfully.");
 	}
 
@@ -125,7 +125,7 @@ public class EnInitialReviewerPom extends CommonData {
 	}
 
 	public void returnAction() throws Exception {
-		returnButton();
+//		returnButton();
 		returnButton();
 		returnComments.sendKeys("Returned to the Work Order Initiator");
 		returnButton();

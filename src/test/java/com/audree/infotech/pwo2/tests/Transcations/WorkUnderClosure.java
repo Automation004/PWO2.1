@@ -31,6 +31,8 @@ public class WorkUnderClosure extends BaseTest {
 			// Already Given In Masters
 			excelData.put("failureObjectUpdate", xls.getCellData("MasterData", "FailureObjectUpdate", i));
 			excelData.put("MaterialCodeUpdate", xls.getCellData("MasterData", "MaterialCodeUpdate", i));
+			excelData.put("MaterialNameUpdate", xls.getCellData("MasterData", "MaterialNameUpdate", i));
+
 			excelData.put("RoomIdUpdate", xls.getCellData("MasterData", "RoomIdUpdate", i));
 			excelData.put("EquipOrInstIdUpdate", xls.getCellData("MasterData", "EquipOrInstIdUpdate", i));
 
@@ -56,9 +58,13 @@ public class WorkUnderClosure extends BaseTest {
 	public void workkUnderClosureDetails() throws Exception {
 		// Enter activity and Detail of work and save
 		System.out.println("workkUnderClosureDetails Invoked");
+		Thread.sleep(2000);
+		scrollPagedown();
 		workUnderClosurePom.failureObject(excelData.get("failureObjectUpdate"));
 		workUnderClosurePom.enterReasonForFailure(excelData.get("reasonForFailure"));
 		workUnderClosurePom.selectMaterialCode(excelData.get("MaterialCodeUpdate"));
+		workUnderClosurePom.selectMaterialName(excelData.get("MaterialNameUpdate"));
+		workUnderClosurePom.enterUom("100");
 		workUnderClosurePom.enterQuantity(excelData.get("quantity"));
 		workUnderClosurePom.addButton();
 		scrollPagedown();

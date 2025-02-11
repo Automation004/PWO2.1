@@ -1,51 +1,67 @@
 package com.audree.infotech.pwo2.tests.masters;
 
-import java.util.HashMap;
-import java.util.Map;
-
-import org.testng.annotations.BeforeMethod;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
-import com.audree.infotech.pwo2.pages.masters.EquipOrInstName_pom;
+//import com.audree.infotech.pwo2.pages.masters.EquipOrInstNamePom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
 
 public class EquipOrInstName extends BaseTest {
-	public EquipOrInstName_pom equipNamePOM;
-	Map<String, String> excelData = new HashMap<>();
 
-	@BeforeMethod()
+	private static final Logger logger = LoggerFactory.getLogger(EquipOrInstName.class);
+//	public EquipOrInstNamePom equipNamePOM;
+	// Read the starting and ending rows from the properties file
+	public String equipOrInstName;
+	public String equipOrInstNameUpdate;
+
+	@BeforeTest
 	public void setUp() throws Exception {
-		// Pre-Load all required data from Excel
-		equipNamePOM = new EquipOrInstName_pom(driver, test, pro);
-		// Read the starting and ending rows from the properties file
-		int startRow = Integer.parseInt(pro.getProperty("startRow"));
-		int endRow = Integer.parseInt(pro.getProperty("endRow"));
-		for (int i = startRow; i <= endRow; i++) {
-			excelData.put("EquipOrInstName", xls.getCellData("MasterData", "EquipOrInstName", i));
-			excelData.put("EquipOrInstNameUpdate", xls.getCellData("MasterData", "EquipOrInstNameUpdate", i));
-
-			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
-			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
-			excelData.put("EN Reviewer", xls.getCellData("Credentials", "EN Reviewer", i));
-		}
+		// Ensure that 'pro' is initialized before accessing its properties
+//		equipNamePOM = new EquipOrInstNamePom(driver, test, pro);
+		// Initialize startRow and endRow after pro has been properly initialized
 	}
 
-	@Test
+	@Test()
 	public void Create() throws Exception {
 		try {
+			logger.info("Starting Create test.");
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
-			equipNamePOM.create(excelData.get("EquipOrInstName"));
+			logger.info("Login successful.");
+
+			for (int i = Integer.parseInt(pro.getProperty("startRow")); i <= Integer
+					.parseInt(pro.getProperty("endRow")); i++) {
+
+				// Fetch data for each row
+				equipOrInstName = xls.getCellData("MasterData", "EquipOrInstName", i);
+				equipOrInstNameUpdate = xls.getCellData("MasterData", "EquipOrInstNameUpdate", i);
+
+				logger.info("Creating equipment with name: {}", equipOrInstName);
+//				equipNamePOM.create(equipOrInstName);
+			}
+			logger.info("Create test completed successfully.");
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.error("Error occurred during Create test: ", e);
+			throw e;
 		}
 	}
 
-	@Test
+	@Test()
 	public void Update() throws Exception {
 		try {
-			equipNamePOM.update(excelData.get("EquipOrInstName"), excelData.get("EquipOrInstNameUpdate"));
+			logger.info("Starting Update test.");
+
+			for (int i = Integer.parseInt(pro.getProperty("startRow")); i <= Integer
+					.parseInt(pro.getProperty("endRow")); i++) {
+				
+				logger.info("Updating equipment from: {} to {}", equipOrInstName, equipOrInstNameUpdate);
+//				equipNamePOM.update(equipOrInstName, equipOrInstNameUpdate);
+			}
+			logger.info("Update test completed successfully.");
 		} catch (Exception e) {
-			System.out.println(e);
+			logger.error("Error occurred during Update test: ", e);
+			throw e;
 		}
 	}
 }

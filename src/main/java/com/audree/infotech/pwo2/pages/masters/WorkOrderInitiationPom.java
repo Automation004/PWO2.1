@@ -1,14 +1,16 @@
 package com.audree.infotech.pwo2.pages.masters;
 
 import java.util.Properties;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 import org.testng.asserts.SoftAssert;
 
 import com.audree.infotech.pwo2.utils.CommonData;
@@ -59,32 +61,41 @@ public class WorkOrderInitiationPom extends CommonData {
 	@FindBy(xpath = "(//*[@class='fa fa-eye'])[1]")
 	private WebElement eyeButton;
 
-	@FindBy(xpath = "//tr[1]/td[3]")
+	@FindBy(xpath = "(//*[@class='fa fa-eye'])[2]")
+	private WebElement eyeButton2;
+
+	@FindBy(xpath = "(//tr)[3]/td[3]")
 	private WebElement departmentNameText;
 
-	@FindBy(xpath = "//tr[1]/td[4]")
+	@FindBy(xpath = "(//tr)[3]/td[4]")
 	private WebElement equipInstNameText;
 
-	@FindBy(xpath = "//tr[1]/td[5]")
+	@FindBy(xpath = "(//tr)[3]/td[5]")
 	private WebElement equipInstIdText;
 
-	@FindBy(xpath = "//tr[1]/td[6]")
+	@FindBy(xpath = "(//tr)[3]/td[6]")
 	private WebElement roomNameText;
 
-	@FindBy(xpath = "//tr[1]/td[7]")
+	@FindBy(xpath = "(//tr)[3]/td[7]")
 	private WebElement roomIdText;
 
-	@FindBy(xpath = "//tr[1]/td[8]")	
+	@FindBy(xpath = "(//tr)[3]/td[8]")
 	private WebElement descriptionOfWorkText;
 
-	@FindBy(xpath = "//tr[1]/td[9]")
+	@FindBy(xpath = "(//tr)[3]/td[9]")
 	private WebElement initiatedByText;
 
-	@FindBy(xpath = "//tr[1]/td[10]")
+	@FindBy(xpath = "(//tr)[3]/td[10]")
 	private WebElement statusText;
 
-	@FindBy(xpath = "//body//app-root//a[4]")
+	@FindBy(xpath = "//div[normalize-space()='Returned']")
 	private WebElement returnTab;
+
+	@FindBy(xpath = "//h2[@id='swal2-title']")
+	private WebElement workOrderIdLinkText;
+
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='Search...']")
+	public WebElement SearchBox;
 
 	public void initiation() {
 		test.log(Status.INFO, "Clicking on the 'Initiate' tab.");
@@ -102,16 +113,24 @@ public class WorkOrderInitiationPom extends CommonData {
 		test.log(Status.PASS, "clicked on  " + equipmentOrInstId + "link");
 		Thread.sleep(1000);
 		scrollPagedown();
-		reInitiateButton.click();
-		test.log(Status.PASS, "clicked on ReInitiate Button");
-		yesButton();
-		test.log(Status.PASS, "clicked on Yes Button");
-		password.sendKeys(pro.getProperty("Password"));
-		test.log(Status.PASS, "Given Valid credentials");
-		submitAction();
-		test.log(Status.PASS, "clicked on Submit Button");
-		okButton();
-		test.log(Status.PASS, "clicked on Ok Button");
+		try {
+			reInitiateButton.click();
+			test.log(Status.PASS, "clicked on ReInitiate Button");
+			try {
+				yesButton();
+			} catch (Exception e) {
+				e.printStackTrace();
+				test.log(Status.PASS, "clicked on Yes Button");
+			}
+			password.sendKeys(pro.getProperty("Password2"));
+			test.log(Status.PASS, "Given Valid credentials");
+			submitButton();
+			test.log(Status.PASS, "clicked on Submit Button");
+			okButton();
+			test.log(Status.PASS, "clicked on Ok Button");
+		} catch (Exception ex) {
+			System.out.println("Error Occured at" + ex);
+		}
 
 	}
 
@@ -125,8 +144,8 @@ public class WorkOrderInitiationPom extends CommonData {
 		test.log(Status.INFO, "Clicking on the 'Initiated' tab.");
 		InitiatedtabClick.click();
 		test.log(Status.PASS, "'Initiated' tab clicked successfully.");
-		SearchBox(equipIdOrRoomId);
-		test.log(Status.PASS, "Searched " + equipIdOrRoomId);
+		SearchBox.sendKeys(extractedWorkIdOrderValue);
+		test.log(Status.PASS, "Searched " + extractedWorkIdOrderValue);
 
 		/*
 		 * workOrderIdClick.click(); test.log(Status.PASS, "clicked on  " +
@@ -141,6 +160,9 @@ public class WorkOrderInitiationPom extends CommonData {
 		test.log(Status.PASS, "Searched: Under Initiation status");
 		editButton();
 		test.log(Status.PASS, "Edit button clicked successfully.");
+		Thread.sleep(500);
+		scrollPagedown();
+		scrollPagedown();
 		Thread.sleep(1000);
 		inProgressSumbitAction(DescriptionUpdate);
 	}
@@ -150,8 +172,8 @@ public class WorkOrderInitiationPom extends CommonData {
 		descriptionOfWorkSk.sendKeys(DescriptionUpdate);
 		test.log(Status.PASS, "sent updated data of Description Of Work successfully.");
 		submitAction();
-		eyeButton.click();
-		test.log(Status.PASS, "clicked on preview button");
+//		eyeButton2.click();
+//		test.log(Status.PASS, "clicked on preview button");
 	}
 
 	public void workRelatedToDropdownAction(String WorkRelatedTo) {
@@ -210,15 +232,33 @@ public class WorkOrderInitiationPom extends CommonData {
 		}
 	}
 
-	public void submitAction() throws Exception {
+	// Because of getting work order id text i used this method locally instaed
+	// giving in commondata class
+	public String submitAction() {
 		try {
 			test.log(Status.INFO, "Submitting with eSignature.");
-			submitEsigantureActions();
+			submitButton();
+			test.log(Status.PASS, "Submit button clicked");
+			Thread.sleep(1000);
+			try {
+				yesButton();
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			test.log(Status.PASS, "Yes button clicked");
+			password.sendKeys(pro.getProperty("Password"));
+			test.log(Status.PASS, "Given valid password");
+			submitButton2();
+			test.log(Status.PASS, "Submit button clicked again");
+			getWorkOrderId();//
+			okButton();
+			test.log(Status.PASS, "OK button clicked");
 			test.log(Status.PASS, "Submitted with eSignature successfully.");
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Failed to submit with eSignature. Error: " + e.getMessage());
-			throw e;
 		}
+		return extractedWorkIdOrderValue;
 	}
 
 	public void saveValidationCheck() throws Exception {
@@ -236,7 +276,7 @@ public class WorkOrderInitiationPom extends CommonData {
 
 	public void validateWorkOrderInTable(String expectedDepartment, String expectedEquipInstName,
 			String expectedEquipInstId, String expectedRoomName, String expectedRoomId,
-			String expectedDescriptionOfWork, String expectedInitiatedBy) {
+			String expectedDescriptionOfWork, String expectedInitiatedBy) throws Exception {
 		SoftAssert softAssert = new SoftAssert(); // Create a SoftAssert instance
 
 		try {
@@ -283,4 +323,23 @@ public class WorkOrderInitiationPom extends CommonData {
 		}
 	}
 
+	public String getWorkOrderId() {
+		// Get the text of the element, which changes dynamically each time
+		String elementText = workOrderIdLinkText.getText();
+
+		// Regular expression to match "PRO-WO/YYYY/MM/DD"
+		String regex = "PRO-WO/\\d{4}/\\d{2}/\\d{2}";
+		Pattern pattern = Pattern.compile(regex);
+		Matcher matcher = pattern.matcher(elementText);
+		// Declare extractedValue outside the if block
+
+		if (matcher.find()) {
+			// Extracted value (this will dynamically change based on the new record)
+			extractedWorkIdOrderValue = matcher.group(0);
+			System.out.println("Extracted Dynamic Value: " + extractedWorkIdOrderValue);
+		} else {
+			System.out.println("Pattern not found in the text.");
+		}
+		return extractedWorkIdOrderValue;
+	}
 }

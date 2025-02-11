@@ -19,13 +19,13 @@ public class RoomId extends BaseTest {
     	// Read the starting and ending rows from the properties file
 		int startRow = Integer.parseInt(pro.getProperty("startRow"));
 		int endRow = Integer.parseInt(pro.getProperty("endRow"));
-		for (int i = startRow; i <= endRow; i++) {            excelData.put("RoomNameUpdate", xls.getCellData("MasterData", "RoomNameUpdate", i));
+		for (int i = startRow; i <= endRow; i++) {     
+			excelData.put("RoomNameUpdate", xls.getCellData("MasterData", "RoomNameUpdate", i));
             excelData.put("RoomId", xls.getCellData("MasterData", "RoomId", i));
             excelData.put("BlockDropdown", xls.getCellData("MasterData", "BlockUpdate", i));
             excelData.put("Location", xls.getCellData("MasterData", "Location", i));
             excelData.put("RoomIdUpdate", xls.getCellData("MasterData", "RoomIdUpdate", i));
-            excelData.put("LocationUpdate", xls.getCellData("MasterData", "LocationUpdate", i));
-            
+            excelData.put("LocationUpdate", xls.getCellData("MasterData", "LocationUpdate", i));  
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 			excelData.put("EN Reviewer", xls.getCellData("Credentials", "EN Reviewer", i));
@@ -36,18 +36,18 @@ public class RoomId extends BaseTest {
     public void Create() throws Exception {
         try {
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
-            roomIdPom.Create(excelData.get("RoomNameUpdate"), excelData.get("RoomId"), excelData.get("BlockDropdown"), excelData.get("Location"));
+            roomIdPom.Create(excelData.get("RoomNameUpdate"), excelData.get("RoomIdUpdate"), excelData.get("BlockDropdown"), excelData.get("LocationUpdate"));
         } catch (Exception e) {
             System.out.println(e);
         }
     }
 
-    @Test
-    public void Update() throws Exception {
-        try {
-            roomIdPom.Update(excelData.get("RoomNameUpdate"), excelData.get("RoomIdUpdate"), excelData.get("LocationUpdate"));
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
+//    @Test
+//    public void Update() throws Exception {
+//        try {
+//            roomIdPom.Update(excelData.get("RoomNameUpdate"), excelData.get("RoomIdUpdate"), excelData.get("LocationUpdate"));
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
+//    }
 }

@@ -5,11 +5,10 @@
     <classes>
       <class name="com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure">
         <methods>
-          <include name="WorkUnderProgressSelect"/>
-          <include name="workkUnderClosureDetails"/>
           <include name="initializeExtentTest"/>
           <include name="EndReport"/>
           <include name="suiteSetUp"/>
+          <include name="savingRecord"/>
           <include name="setUp"/>
         </methods>
       </class> <!-- com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure -->

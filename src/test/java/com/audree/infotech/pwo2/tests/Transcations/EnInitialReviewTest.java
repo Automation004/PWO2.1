@@ -2,13 +2,18 @@ package com.audree.infotech.pwo2.tests.Transcations;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import com.audree.infotech.pwo2.pages.masters.EnInitialReviewerPom;
+import com.audree.infotech.pwo2.pages.masters.WorkOrderInitiationPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
 
 public class EnInitialReviewTest extends BaseTest {
 	public EnInitialReviewerPom enInitialReviewer;
+    WorkOrderInitiationPom workOrderInitiationPom;
+
 	Map<String, String> excelData = new HashMap<>();
 
 	@BeforeClass
@@ -33,7 +38,7 @@ public class EnInitialReviewTest extends BaseTest {
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 
-			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password"));
+			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 
 		}
@@ -45,7 +50,7 @@ public class EnInitialReviewTest extends BaseTest {
 		enInitialReviewer.clickENInitialReceiver();
 
 		// Search for "equipment Id"
-		enInitialReviewer.enterSearchText(excelData.get("EquipOrInstIdUpdate"));
+		enInitialReviewer.enterSearchText(pro.getProperty("workOrderId"));
 
 		// Click on Word Order Id link
 		enInitialReviewer.clickWoOrderIdLink();
@@ -62,10 +67,10 @@ public class EnInitialReviewTest extends BaseTest {
 
 	public void EnInitialReviewReturn() throws Exception {
 		// Click "EN Initial Receiver"
-		enInitialReviewer.QAReturnedTabClick();
+//		enInitialReviewer.QAReturnedTabClick();
 
 		// Search for "equipment Id"
-		enInitialReviewer.enterSearchText(excelData.get("EquipOrInstIdUpdate"));
+		enInitialReviewer.enterSearchText(pro.getProperty("workOrderId"));
 
 		// Click on Word Order Id link
 		enInitialReviewer.clickWoOrderIdLink();
@@ -95,7 +100,7 @@ public class EnInitialReviewTest extends BaseTest {
 	@Test
 	public void ReturnRecord() throws Exception {
 		try {
-			EnInitialReviewReturn();
+//			EnInitialReviewReturn();
 			enInitialReviewer.returnAction();
 			System.out.println("Record Returned Successfully");
 		} catch (Exception e) {
