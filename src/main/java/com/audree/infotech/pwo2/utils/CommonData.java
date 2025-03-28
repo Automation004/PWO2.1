@@ -47,8 +47,8 @@ public class CommonData {
 	@FindBy(xpath = "//*[contains(text(),'Masters')]")
 	protected WebElement masterClick;
 
-	@FindBy(xpath = "//button[contains(text(),'Save')]")
-	protected WebElement saveButton;
+	@FindBy(xpath = "//button[normalize-space(text())='Save']")
+	public WebElement saveButton;
 
 	@FindBy(xpath = "(//button[contains(text(),'Save')])[2]")
 	protected WebElement saveButton2;
@@ -124,7 +124,7 @@ public class CommonData {
 	}
 
 	public void saveEsigantureActions() throws Exception {
-		Thread.sleep(1000);
+		Thread.sleep(1500);
 		saveButton.click();
 		test.log(Status.PASS, "Save button clicked");
 		yesButton();
@@ -150,7 +150,7 @@ public class CommonData {
 
 	public void submitEsigantureActions() throws Exception {
 		try {
-			documentClosure.click();
+			documentClosure.click();// need to remove try catch and manage by if block
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -160,7 +160,27 @@ public class CommonData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		try {
+			submitButton();
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		}
 		test.log(Status.PASS, "Submit button clicked");
+		yesButton();
+		test.log(Status.PASS, "Yes button clicked");
+		password.sendKeys(pro.getProperty("Password"));
+		test.log(Status.PASS, "Given valid password");
+		submitButton2();
+		test.log(Status.PASS, "Submit button clicked again");
+		// workOrderInitiationPom.getWorkOrderId();
+		okButton();
+		test.log(Status.PASS, "OK button clicked");
+	}
+
+	public void returnEsigantureActions() throws Exception {
+
+		returnButton();
+		test.log(Status.PASS, "Return button clicked");
 		yesButton();
 		test.log(Status.PASS, "Yes button clicked");
 		password.sendKeys(pro.getProperty("Password"));
@@ -266,13 +286,24 @@ public class CommonData {
 	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Submit')])[1]")
 	public WebElement SubmitText01;
 
-	public void SubmitText01() throws Exception {
+	public void submitButton01() throws Exception {
 		WebElement Color = driver.findElement(By.xpath("(//button[contains(text(),'Submit')])[1]"));
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
 
 		SubmitText01.click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	}
+	
+	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Submit')])[2]")
+	public WebElement submit_Button2;
+	
+	public void clickSubmitButton2() throws Exception {
+		Thread.sleep(500);
+		submit_Button2.click();
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		test.log(Status.PASS, "Submit button clicked");
+
 	}
 
 	// SubmitText04
@@ -351,6 +382,8 @@ public class CommonData {
 		Submit.click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		Thread.sleep(500);
+		test.log(Status.PASS, "Submit button clicked");
+
 	}
 
 	// *********************************************************************************************************************
@@ -363,7 +396,7 @@ public class CommonData {
 	// *********************************************************************************************************************
 	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Submit')])[3]")
 	public WebElement Submit_Text_03;
-	
+
 	@FindBy(how = How.XPATH, using = "(//button[contains(text(),' Document Closure ')])[1]")
 	public WebElement documentClosure;
 
@@ -371,6 +404,7 @@ public class CommonData {
 	// *********************************************************************************************************************
 	public void submitButton() throws Exception {
 		Submit_Text_01.click();
+		test.log(Status.PASS, "Submit button clicked");
 	}
 
 	// *********************************************************************************************************************
@@ -514,6 +548,8 @@ public class CommonData {
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
 		Yes.click();
+		test.log(Status.PASS, "Yes button clicked");
+
 	}
 
 	// Ok
@@ -526,6 +562,8 @@ public class CommonData {
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
 		Ok.click();
+		test.log(Status.PASS, "Ok button clicked");
+
 	}
 
 	// SEARCHBOX
@@ -799,15 +837,28 @@ public class CommonData {
 		Password_Fill.sendKeys(x);
 		Thread.sleep(500);
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		test.log(Status.PASS, "Given valid password");
 	}
+	// Password_Fill
+	@FindBy(how = How.XPATH, using = "//input[@placeholder='Password']")
+	public WebElement inputPassword;
+
+	public void inputPasswordPlaceHolder(String x) throws Exception {
+
+		inputPassword.sendKeys(x);
+		Thread.sleep(500);
+		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		test.log(Status.PASS, "Given valid password");
+	}
+	
 
 	// Return
-	@FindBy(how = How.XPATH, using = "//button[contains(text(),'Return')]")
+	@FindBy(how = How.XPATH, using = "//button[normalize-space(text())='Return']")
 	public WebElement ReturnButton;
 
 	public void returnButton() throws Exception {
 
-		WebElement Color = driver.findElement(By.xpath("//button[contains(text(),'Return')]"));
+		WebElement Color = driver.findElement(By.xpath("//button[normalize-space(text())='Return']"));
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
 		ReturnButton.click();
@@ -1007,13 +1058,13 @@ public class CommonData {
 
 	@FindBy(xpath = "(//input[@type='text'])[3]")
 	public WebElement textBoxThree;
-	
+
 	@FindBy(xpath = "(//input[@type='text'])[4]")
 	public WebElement textBoxFour;
-	
+
 	@FindBy(xpath = "(//input[@type='text'])[5]")
 	public WebElement textBoxFive;
-	
+
 	@FindBy(xpath = "(//input[@type='text'])[6]")
 	public WebElement textBoxSix;
 
@@ -1045,6 +1096,9 @@ public class CommonData {
 	@FindBy(xpath = "(//*[@type='radio'])[3]")
 	public WebElement Radio_Button_3;
 
+	@FindBy(xpath = "(//*[@type='radio'])[4]")
+	public WebElement Radio_Button_4;
+	
 	public void radioButton1() throws Exception {
 		Radio_Button_1.click();
 		Thread.sleep(300);
@@ -1056,6 +1110,11 @@ public class CommonData {
 	}
 
 	public void radioButton3() throws Exception {
+		Radio_Button_3.click();
+		Thread.sleep(300);
+
+	}
+	public void radioButton4() throws Exception {
 		Radio_Button_3.click();
 		Thread.sleep(300);
 

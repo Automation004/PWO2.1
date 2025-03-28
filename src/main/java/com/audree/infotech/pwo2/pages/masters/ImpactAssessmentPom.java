@@ -31,7 +31,7 @@ public class ImpactAssessmentPom extends CommonData {
 
 	@FindBy(xpath = "(//a[@class='work-order-link'])[1]")
 	private WebElement workOrderIdClick;
-	
+
 	@FindBy(xpath = "//a[@class='work-order-link badge1 boldF']")
 	private WebElement impactWorkOrderIdClick;
 
@@ -95,16 +95,22 @@ public class ImpactAssessmentPom extends CommonData {
 		try {
 			test.log(Status.INFO, "Checking Product Impact Radio Button.");
 			// Product Impact :
-			radioButton1();
+			if(pro.getProperty("product").equals("Yes")) {
+				radioButton2();
+			}
+			else if(pro.getProperty("product").equals("No"))
 			test.log(Status.PASS, "Checked Product Impact Radio Button.");
 			//Equip/Inst Impact
 			test.log(Status.INFO, "Checking Equip/Inst Impact Radio Button.");
 			radioButton3();
 			test.log(Status.PASS, "Checked Equip/Inst Impact Radio Button.");
-		} catch (Exception e) {
-			test.log(Status.FAIL, "Failed to Radio button Action Error: " + e.getMessage());
-			throw e;
-		}
+		}catch(
+
+	Exception e)
+	{
+		test.log(Status.FAIL, "Failed to Radio button Action Error: " + e.getMessage());
+		throw e;
 	}
+}
 
 }

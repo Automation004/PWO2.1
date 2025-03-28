@@ -12,7 +12,7 @@ import com.audree.infotech.pwo2.testcomponents.BaseTest;
 
 public class EnInitialReviewTest extends BaseTest {
 	public EnInitialReviewerPom enInitialReviewer;
-    WorkOrderInitiationPom workOrderInitiationPom;
+	WorkOrderInitiationPom workOrderInitiationPom;
 
 	Map<String, String> excelData = new HashMap<>();
 
@@ -32,6 +32,8 @@ public class EnInitialReviewTest extends BaseTest {
 			// Already Given In Masters
 			excelData.put("RoomIdUpdate", xls.getCellData("MasterData", "RoomIdUpdate", i));
 			excelData.put("EquipOrInstIdUpdate", xls.getCellData("MasterData", "EquipOrInstIdUpdate", i));
+			excelData.put("EquipOrInstNameUpdate", xls.getCellData("MasterData", "EquipOrInstNameUpdate", i));
+
 			excelData.put("TypeOfWorkUpdate", xls.getCellData("MasterData", "TypeOfWorkUpdate", i));
 			excelData.put("SectionUpdate", xls.getCellData("MasterData", "SectionUpdate", i));
 
@@ -41,45 +43,36 @@ public class EnInitialReviewTest extends BaseTest {
 			Login(pro.getProperty("EnReviewer"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 
+			// Click "EN Initial Receiver"
+			enInitialReviewer.clickENInitialReceiver();
+
 		}
 	}
 
 	@Test
 	public void EnInitialReviewWorkFlow() throws Exception {
-		// Click "EN Initial Receiver"
-		enInitialReviewer.clickENInitialReceiver();
+
+		Thread.sleep(1000);
 
 		// Search for "equipment Id"
-		enInitialReviewer.enterSearchText(pro.getProperty("workOrderId"));
+		// enInitialReviewer.enterSearchText(pro.getProperty("workOrderId"));
+		enInitialReviewer.enterSearchText(excelData.get("EquipOrInstNameUpdate"));
 
 		// Click on Word Order Id link
 		enInitialReviewer.clickWoOrderIdLink();
 		Thread.sleep(1000);
 
-		// select TypeOfWork data from dropdown
-		enInitialReviewer.selectTypeOfWork(excelData.get("TypeOfWorkUpdate"));
-
-		// Select Section data from dropdown
-		enInitialReviewer.selectSectionOption(excelData.get("SectionUpdate"));
-
-		enInitialReviewer.radioButton(excelData.get("WorkCategorization"));
-	}
-
-	public void EnInitialReviewReturn() throws Exception {
-		// Click "EN Initial Receiver"
-//		enInitialReviewer.QAReturnedTabClick();
-
-		// Search for "equipment Id"
-		enInitialReviewer.enterSearchText(pro.getProperty("workOrderId"));
-
-		// Click on Word Order Id link
-		enInitialReviewer.clickWoOrderIdLink();
-		Thread.sleep(1000);
 	}
 
 	@Test
 	public void savingRecord() throws Exception {
+
 		try {
+			// select TypeOfWork data from dropdown
+			enInitialReviewer.selectTypeOfWork(excelData.get("TypeOfWorkUpdate"));
+			// Select Section data from dropdown
+			enInitialReviewer.selectSectionOption(excelData.get("SectionUpdate"));
+			enInitialReviewer.radioButton(excelData.get("WorkCategorization"));
 			enInitialReviewer.saveAction();
 			System.out.println("Record Saved Successfully");
 		} catch (Exception e) {
@@ -90,7 +83,12 @@ public class EnInitialReviewTest extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
-			enInitialReviewer.submitAction();
+			EnInitialReviewWorkFlow();
+			enInitialReviewer.submitButton();
+			enInitialReviewer.yesButton();
+			enInitialReviewer.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			enInitialReviewer.clickSubmitButton2();
+			enInitialReviewer.okButton();
 			System.out.println("Record Submitted Successfully");
 		} catch (Exception e) {
 			System.out.println("submittingRecord method failed" + e);
@@ -100,8 +98,12 @@ public class EnInitialReviewTest extends BaseTest {
 	@Test
 	public void ReturnRecord() throws Exception {
 		try {
-//			EnInitialReviewReturn();
-			enInitialReviewer.returnAction();
+			EnInitialReviewWorkFlow();
+			enInitialReviewer.returnButton();
+			enInitialReviewer.yesButton();
+			enInitialReviewer.Password_Fill(pro.getProperty("Password2"));
+			enInitialReviewer.Submit();
+			enInitialReviewer.okButton();
 			System.out.println("Record Returned Successfully");
 		} catch (Exception e) {
 			System.out.println("Record Returned  failed" + e);

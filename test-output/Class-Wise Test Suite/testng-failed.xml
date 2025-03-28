@@ -80,7 +80,6 @@
           <include name="EndReport"/>
           <include name="Create"/>
           <include name="suiteSetUp"/>
-          <include name="Update"/>
         </methods>
       </class> <!-- com.audree.infotech.pwo2.tests.masters.RoomId -->
     </classes>
@@ -89,7 +88,6 @@
     <classes>
       <class name="com.audree.infotech.pwo2.tests.masters.EquipOrInstId">
         <methods>
-          <include name="Update"/>
           <include name="Create"/>
           <include name="initializeExtentTest"/>
           <include name="EndReport"/>
@@ -113,4 +111,17 @@
       </class> <!-- com.audree.infotech.pwo2.tests.masters.TypeOfWork -->
     </classes>
   </test> <!-- TypeOfWork Test(failed) -->
+  <test thread-count="5" name="RoomName Test(failed)">
+    <classes>
+      <class name="com.audree.infotech.pwo2.tests.masters.RoomName">
+        <methods>
+          <include name="initializeExtentTest"/>
+          <include name="Update"/>
+          <include name="EndReport"/>
+          <include name="setUp"/>
+          <include name="suiteSetUp"/>
+        </methods>
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.RoomName -->
+    </classes>
+  </test> <!-- RoomName Test(failed) -->
 </suite> <!-- Failed suite [Class-Wise Test Suite] -->

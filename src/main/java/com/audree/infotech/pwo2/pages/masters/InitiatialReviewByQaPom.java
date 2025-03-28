@@ -45,10 +45,14 @@ public class InitiatialReviewByQaPom extends CommonData {
 	@FindBy(xpath = "//input[@formcontrolname='comments']")
 	private WebElement returnCommnets;
 
-	public void initialReview(String equipIdOrRoomId) throws Exception {
+	public void initialReview() throws Exception {
 		test.log(Status.INFO, "Clicking on the 'Initiated' tab.");
 		InitialReviewtab.click();
 		test.log(Status.PASS, "'Initiated' tab clicked successfully.");
+		Thread.sleep(500);
+	}
+
+	public void proceedActions(String equipIdOrRoomId) throws Exception {
 		SearchBox(equipIdOrRoomId);
 		test.log(Status.PASS, "Searched " + equipIdOrRoomId);
 		String workOrderIdText = workOrderIdClick.getText();
@@ -60,6 +64,7 @@ public class InitiatialReviewByQaPom extends CommonData {
 			System.out.println(comments.getText());
 			comments.sendKeys(equipIdOrRoomId + " record initial reviewed by QA sucessfully");
 		} else {
+			comments.clear();
 			comments.sendKeys(equipIdOrRoomId + " record initial reviewed by QA sucessfully");
 			System.out.println(comments.getText());
 		}

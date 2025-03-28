@@ -22,7 +22,6 @@ public class BlockTest extends BaseTest {
 		{
 			excelData.put("Block", xls.getCellData("MasterData", "Block", i));
 			excelData.put("BlockUpdate", xls.getCellData("MasterData", "BlockUpdate", i));
-			
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 			excelData.put("EN Reviewer", xls.getCellData("Credentials", "EN Reviewer", i));

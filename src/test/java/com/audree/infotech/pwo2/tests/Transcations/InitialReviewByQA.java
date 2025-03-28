@@ -37,15 +37,15 @@ public class InitialReviewByQA extends BaseTest {
 
 			Login(pro.getProperty("QAReview"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
-
+			initiatialReviewByQaPom.initialReview();
 		}
 	}
 
 	@Test
 	public void initialReviewWorkFlow() throws Exception {
+		Thread.sleep(600);
 		// Actions of initial Review WorkFlow
-		initiatialReviewByQaPom.initialReview(excelData.get("EquipOrInstIdUpdate"));
-		
+		initiatialReviewByQaPom.proceedActions(excelData.get("EquipOrInstIdUpdate"));
 	}
 
 	@Test
@@ -62,7 +62,13 @@ public class InitialReviewByQA extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
-			initiatialReviewByQaPom.submitAction();
+			initialReviewWorkFlow();
+			Thread.sleep(500);
+			initiatialReviewByQaPom.submitButton();
+			initiatialReviewByQaPom.yesButton();
+			initiatialReviewByQaPom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			initiatialReviewByQaPom.clickSubmitButton2();
+			initiatialReviewByQaPom.okButton();
 			System.out.println("Record Submitted Successfully");
 		} catch (Exception e) {
 			System.out.println("submittingRecord method failed" + e);
@@ -72,6 +78,7 @@ public class InitialReviewByQA extends BaseTest {
 	@Test
 	public void ReturnRecord() throws Exception {
 		try {
+			Thread.sleep(500);
 			initiatialReviewByQaPom.returnAction(excelData.get("returnTo"));
 			System.out.println("Record Returned Successfully");
 		} catch (Exception e) {

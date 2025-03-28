@@ -120,8 +120,8 @@ public class SectionPom extends CommonData {
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");
 
-			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
+//			yesButton();
+//			test.log(Status.PASS, "Yes button clicked");
 
 			EsigantureActions();
 

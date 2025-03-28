@@ -180,6 +180,7 @@ public class WorkOrderInitiationPom extends CommonData {
 		try {
 			test.log(Status.INFO, "Selecting '" + WorkRelatedTo + "' in 'Work Related To' dropdown.");
 			workRelatedToDropdown.click();
+			Thread.sleep(300);
 			workRelatedToDropdown.sendKeys(WorkRelatedTo, Keys.ENTER);
 			test.log(Status.PASS, "Selected '" + WorkRelatedTo + "' successfully.");
 		} catch (Exception e) {

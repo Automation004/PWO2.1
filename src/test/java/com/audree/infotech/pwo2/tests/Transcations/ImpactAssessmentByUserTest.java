@@ -31,26 +31,21 @@ public class ImpactAssessmentByUserTest extends BaseTest {
 
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			Thread.sleep(1000);
+
+			// Click "impact Assessment" Tab
+			impactAssessmentPom.impactAssessmentActions();
+
 		}
 	}
 
 	public void impactAssessmentInitiation() throws Exception {
-		// Click "impact AssessmentPom"
-		try {
-			Thread.sleep(1000);
-			impactAssessmentPom.impactAssessmentActions();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+
 		// Search for "equipment Id"
-		impactAssessmentPom.searchWorkOrder(pro.getProperty("workOrderId"));
+		// impactAssessmentPom.searchWorkOrder(pro.getProperty("workOrderId"));
+		impactAssessmentPom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
+
 		// Click on Word Order Id link
-		try {
-			impactAssessmentPom.selectWorkOrder();
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		impactAssessmentPom.selectWorkOrder();
 	}
 
 	@Test
@@ -73,9 +68,14 @@ public class ImpactAssessmentByUserTest extends BaseTest {
 			Thread.sleep(1000);
 			savingRecord();
 			impactAssessmentInitiation();
+			scrollPagedown();
 			// Enter comments
 			impactAssessmentPom.enterComments("Impact Assessment Sucessfully Initiated");
-			impactAssessmentPom.submitAction();
+			impactAssessmentPom.submitButton();
+			impactAssessmentPom.yesButton();
+			impactAssessmentPom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			impactAssessmentPom.clickSubmitButton2();
+			impactAssessmentPom.okButton();
 			System.out.println("Record Submitted Successfully");
 		} catch (Exception e) {
 			System.out.println("submittingRecord method failed" + e);

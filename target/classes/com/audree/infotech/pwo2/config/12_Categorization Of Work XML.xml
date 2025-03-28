@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="CategorizationOfWorkSuite">
+    <test name="CategorizationOfWorkTests">
+        <classes>
+            <class name="com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest">
+                <methods>
+                    <include name="submittingRecord" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>

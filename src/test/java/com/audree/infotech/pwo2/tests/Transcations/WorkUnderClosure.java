@@ -16,7 +16,7 @@ public class WorkUnderClosure extends BaseTest {
 
 	@BeforeClass
 	public void setUp() throws Exception {
-		// Pre-Load all required data from Excel
+		// PreLoad all required data from Excel
 		workUnderClosurePom = new WorkUnderClosurePom(driver, test, pro);
 
 		// Read the starting and ending rows from the properties file
@@ -41,25 +41,23 @@ public class WorkUnderClosure extends BaseTest {
 
 			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password"));
 			Thread.sleep(1000);
+			workUnderClosurePom.workUnderClosure();
 		}
 	}
 
-	public void WorkUnderProgressSelect() throws Exception {
+	public void WorkUnderClosureSelect() throws Exception {
 
-		workUnderClosurePom.workUnderClosure();
-
+		Thread.sleep(500);
 		// Search for the work order id link
 		workUnderClosurePom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
-
 		// Select the work order from the search results
 		workUnderClosurePom.selectWorkOrder();
 	}
 
-	public void workkUnderClosureDetails() throws Exception {
+	public void workUnderClosureDetails() throws Exception {
 		// Enter activity and Detail of work and save
 		System.out.println("workkUnderClosureDetails Invoked");
 		Thread.sleep(2000);
-		scrollPagedown();
 		workUnderClosurePom.failureObject(excelData.get("failureObjectUpdate"));
 		workUnderClosurePom.enterReasonForFailure(excelData.get("reasonForFailure"));
 		workUnderClosurePom.selectMaterialCode(excelData.get("MaterialCodeUpdate"));
@@ -73,9 +71,13 @@ public class WorkUnderClosure extends BaseTest {
 	@Test
 	public void savingRecord() throws Exception {
 		try {
-			WorkUnderProgressSelect();
-			workkUnderClosureDetails();// values giving before save--it will give submit also
-			workUnderClosurePom.saveAction();
+			WorkUnderClosureSelect();
+			workUnderClosureDetails();// values giving before save--it will give submit also
+			workUnderClosurePom.saveButton();
+			workUnderClosurePom.yesButton();
+			workUnderClosurePom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			workUnderClosurePom.clickSubmitButton2();
+			workUnderClosurePom.okButton();
 			System.out.println("Record Saved Successfully");
 			Thread.sleep(1000);
 		} catch (Exception e) {
@@ -86,10 +88,16 @@ public class WorkUnderClosure extends BaseTest {
 	@Test
 	public void submittingRecord() throws Exception {
 		try {
-			WorkUnderProgressSelect();
+			savingRecord();
+			WorkUnderClosureSelect();
 			scrollPagedown();
+			scrollPagedownWithActions(workUnderClosurePom.Submit);
 			workUnderClosurePom.enterConclusion(excelData.get("conclusion"));
-			workUnderClosurePom.submitAction();
+			workUnderClosurePom.submitButton01();
+			workUnderClosurePom.yesButton();
+			workUnderClosurePom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			workUnderClosurePom.clickSubmitButton2();
+			workUnderClosurePom.okButton();
 			System.out.println("Record Submitted Successfully");
 		} catch (Exception e) {
 			System.out.println("InitiatedTab method failed :" + e);

@@ -8,7 +8,7 @@ import org.testng.annotations.Test;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
 import com.audree.infotech.pwo2.tests.masters.WorkOrderLogPom;
 
-public class WorkOrderLogTest extends BaseTest {
+public class WorkOrderLogTestReport extends BaseTest {
 
 	private WorkOrderLogPom workOrderLogPom;
 	Map<String, String> excelData = new HashMap<>();
@@ -25,6 +25,7 @@ public class WorkOrderLogTest extends BaseTest {
 		for (int i = startRow; i <= endRow; i++) {
 			excelData.put("Department", xls.getCellData("MasterData", "Department", i));
 			excelData.put("WorkRelatedTo", xls.getCellData("Initiator", "WorkRelatedTo", i));
+			excelData.put("EquipOrInstIdUpdate", xls.getCellData("MasterData", "EquipOrInstIdUpdate", i));
 		}
 		fromDate = pro.getProperty("fromDate");
 		toDate = pro.getProperty("toDate");
@@ -47,6 +48,8 @@ public class WorkOrderLogTest extends BaseTest {
 
 		// Submit the form
 		workOrderLogPom.clickGetButton();
+
+		workOrderLogPom.SearchBox(excelData.get("EquipOrInstIdUpdate"));
 
 		// Scroll for visibility (optional)
 		workOrderLogPom.scrollDown();

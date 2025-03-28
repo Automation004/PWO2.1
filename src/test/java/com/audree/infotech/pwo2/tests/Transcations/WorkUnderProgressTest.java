@@ -31,14 +31,15 @@ public class WorkUnderProgressTest extends BaseTest {
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 
 			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password2"));
-			Thread.sleep(1000);
+			Thread.sleep(1000);		
+			workUnderProgressPom.workUnderProgress();
+
 		}
 	}
 
 	@Test
 	public void WorkUnderProgressSelect() throws Exception {
 
-		workUnderProgressPom.workUnderProgress();
 
 		// Search for the work order
 		workUnderProgressPom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
@@ -71,6 +72,11 @@ public class WorkUnderProgressTest extends BaseTest {
 	@Test
 	public	void WorkUnderProgressSubmit() throws Exception {
 		Thread.sleep(1000);
+		// Search for the work order
+		workUnderProgressPom.searchWorkOrder(excelData.get("EquipOrInstIdUpdate"));
+
+		// Select the work order from the search results
+		workUnderProgressPom.selectWorkOrder();
 		// Final submit
 		workUnderProgressPom.submitAction();
 	}

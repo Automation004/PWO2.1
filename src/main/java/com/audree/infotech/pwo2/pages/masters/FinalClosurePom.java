@@ -12,7 +12,7 @@ import com.aventstack.extentreports.Status;
 public class FinalClosurePom extends CommonData {
 	private ExtentTest test;
 	public Properties pro;
-	public String workOrderIdText;
+	public String workOrderIdText; 
 
 	public FinalClosurePom(WebDriver driver, ExtentTest _test, Properties _pro) {
 		super(driver, _test, _pro);
@@ -32,6 +32,10 @@ public class FinalClosurePom extends CommonData {
 
 	@FindBy(xpath = "//input[@formcontrolname='comments']")
 	WebElement commentsFeild;
+	
+
+	@FindBy(xpath = "//select[@formcontrolname='returnToId']")
+	public WebElement returnTo;
 
 	@FindBy(xpath = "//input[@formcontrolname='activity']")
 	WebElement activityFeild;
@@ -41,7 +45,6 @@ public class FinalClosurePom extends CommonData {
 		FinalClosureTabClick.click();
 		test.log(Status.PASS, "'final Closure tab clicked successfully.");
 	}
-
 
 	// Search Work Order
 	public void searchWorkOrder(String workOrder) throws InterruptedException {
@@ -63,6 +66,7 @@ public class FinalClosurePom extends CommonData {
 		test.log(Status.PASS, "Given value for Categorization Of Work: " + value);
 
 	}
+
 	// Method to enter comments
 	public void interimReleaseCheckBox() throws Exception {
 		test.log(Status.INFO, "checking Interim release Check Box:");
@@ -97,6 +101,17 @@ public class FinalClosurePom extends CommonData {
 			test.log(Status.PASS, "Submitted with eSignature successfully.");
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Failed to submit with eSignature. Error: " + e.getMessage());
+			throw e;
+		}
+	}
+
+	public void returnAction() throws Exception {
+		try {
+			test.log(Status.INFO, "Returning with eSignature.");
+			returnEsigantureActions();
+			test.log(Status.PASS, "Returning with eSignature successfully.");
+		} catch (Exception e) {
+			test.log(Status.FAIL, "Failed to return with eSignature. Error: " + e.getMessage());
 			throw e;
 		}
 	}

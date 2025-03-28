@@ -6,7 +6,6 @@ import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.time.Duration;
@@ -29,10 +28,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterMethod;
-import org.testng.annotations.BeforeSuite;
+import org.testng.annotations.AfterSuite;
+import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 
-import com.audree.infotech.pwo2.pages.masters.WorkOrderInitiationPom;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
@@ -53,7 +52,7 @@ public class BaseTest {
 	public Xls_Reader xls = new Xls_Reader(
 			System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
-	@BeforeSuite(alwaysRun = true)
+	@BeforeClass(alwaysRun = true)
 	public void suiteSetUp() throws Exception {
 		if (driver == null) {
 			pro = new Properties();
@@ -66,6 +65,9 @@ public class BaseTest {
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 			driver.get(pro.getProperty("urlQa"));
+			// Get the singleton instance of ExtentReports
+			extent = getReportObject(this.getClass().getSimpleName());
+			test = extent.createTest(this.getClass().getSimpleName());
 		}
 	}
 
@@ -90,14 +92,19 @@ public class BaseTest {
 		return extent;
 	}
 
-	@BeforeSuite(alwaysRun = true)
+//	@BeforeSuite(alwaysRun = true)
 	public void initializeExtentTest() {
 		// Get the singleton instance of ExtentReports
 		extent = getReportObject(this.getClass().getSimpleName());
 		test = extent.createTest(this.getClass().getSimpleName());
 	}
+	
+	@AfterTest
+	public void tearDown() {
+		driver.close();
+	}
 
-	@AfterMethod()
+	@AfterSuite()
 	public void EndReport() {
 		extent.flush();
 		System.out.println("Flush Completed");
@@ -176,7 +183,7 @@ public class BaseTest {
 	public void scrollPagedown() throws Exception {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
-		Thread.sleep(3000);
+		Thread.sleep(2000);
 	}
 
 	// ***************************************************************************************************

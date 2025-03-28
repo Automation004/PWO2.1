@@ -3,12 +3,11 @@ package com.audree.infotech.pwo2.tests.Transcations;
 import java.util.HashMap;
 import java.util.Map;
 
+import org.openqa.selenium.support.ui.Select;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.audree.infotech.pwo2.pages.masters.CategorizationOfWorkPom;
 import com.audree.infotech.pwo2.pages.masters.FinalClosurePom;
-import com.audree.infotech.pwo2.pages.masters.ImpactAssessmentPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
 
 public class FinalClosureQATest extends BaseTest {
@@ -25,7 +24,7 @@ public class FinalClosureQATest extends BaseTest {
 
 		for (int i = startRow; i <= endRow; i++) {
 
-			// changable Feilds
+			// Changeable Fields
 			
 			
 			// Already Given In Masters
@@ -51,8 +50,12 @@ public class FinalClosureQATest extends BaseTest {
 	public void savingRecord() throws Exception {
 		try {
 			Thread.sleep(3000);
-//			finalClosurePom.interimReleaseCheckBox();
-			finalClosurePom.saveAction();
+			finalClosurePom.interimReleaseCheckBox();
+			finalClosurePom.saveButton();
+			finalClosurePom.yesButton();
+			finalClosurePom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			finalClosurePom.clickSubmitButton2();
+			finalClosurePom.okButton();
 			System.out.println("Record Saved Successfully");
 		} catch (Exception e) {
 			System.out.println("savingRecord method failed :" + e);
@@ -70,7 +73,36 @@ public class FinalClosureQATest extends BaseTest {
 			// Enter comments
 			finalClosurePom.enterComments("SuccessFully Completed the Process of Final Closure");
 			scrollPagedown();
-			finalClosurePom.submitAction();
+			finalClosurePom.submitButton();
+			finalClosurePom.yesButton();
+			finalClosurePom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			finalClosurePom.clickSubmitButton2();
+			finalClosurePom.okButton();
+			System.out.println("Record Submitted Successfully");
+		} catch (Exception e) {
+			System.out.println("submittingRecord method failed" + e);
+		}
+	}
+	@Test
+	public void returningRecord() throws Exception {
+		try {
+			finalClosurePom.finalClosureTabClickActions();
+			finalClosuerAction();
+//			savingRecord();
+//			finalClosuerAction();
+			Thread.sleep(1000);
+			// Enter comments
+			finalClosurePom.enterComments("Returning the record from Final Closure");
+			scrollPagedown();
+			finalClosurePom.returnButton();
+			Select select = new Select(finalClosurePom.returnTo);
+			select.selectByVisibleText(pro.getProperty("returnTo"));
+			finalClosurePom.returnButton();
+			finalClosurePom.yesButton();
+			finalClosurePom.submitButton();
+			finalClosurePom.inputPasswordPlaceHolder(pro.getProperty("Password2"));
+			finalClosurePom.submitButton();
+			finalClosurePom.okButton();
 			System.out.println("Record Submitted Successfully");
 		} catch (Exception e) {
 			System.out.println("submittingRecord method failed" + e);

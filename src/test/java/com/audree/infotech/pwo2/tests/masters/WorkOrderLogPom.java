@@ -28,6 +28,9 @@ public class WorkOrderLogPom extends CommonData {
 	@FindBy(xpath = "//a[normalize-space()='Reports']")
 	private WebElement reportsTab;
 
+	@FindBy(xpath = "//a[normalize-space()='Work Order Trend']")
+	private WebElement workOrderTrend;
+
 	@FindBy(xpath = "//a[normalize-space()='Work Order Log']")
 	private WebElement workOrderLogTab;
 
@@ -46,17 +49,44 @@ public class WorkOrderLogPom extends CommonData {
 	@FindBy(xpath = "//i[@class='fa fa-check-circle']")
 	private WebElement getButton;
 
+	@FindBy(xpath = "//input[@id='yearly']")
+	private WebElement radioYearly;
+
 	// Actions
 
 	// Navigate to Work Order Log
 	public void navigateToWorkOrderLog() throws Exception {
-		test.log(Status.INFO, "Clicking on the 'Reports' tab.");
+		test.log(Status.INFO, "Clicking on the 'Work order log' link.");
 		Thread.sleep(1000);
 		actions.moveToElement(reportsTab).perform();
 		test.log(Status.PASS, "'Reports' tab clicked successfully.");
 		workOrderLogTab.click();
 		test.log(Status.PASS, "'Work Order Log' tab clicked successfully.");
 	}
+
+	// Navigate to Work Order Log
+	public void navigateToWorkOrderTrend() throws Exception {
+		test.log(Status.INFO, "Clicking on the 'Work order log' link.");
+		Thread.sleep(1000);
+		actions.moveToElement(reportsTab).perform();
+		test.log(Status.INFO, "Clicking on the 'Work order trend' link.");
+		Thread.sleep(1000);
+		workOrderTrend.click();
+		test.log(Status.PASS, "'Work Order trend' tab clicked successfully.");
+	}
+
+	public void selectRadioYearly() {
+		test.log(Status.PASS, "Selecting the radio button Yearly");
+		radioYearly.click();
+		test.log(Status.PASS, "Selected the radio button Yearly");
+	}
+	
+    public void FromDate(String date) {
+		test.log(Status.INFO, "Entering 'From Date': " + date);
+        fromDate.click();
+        fromDate.sendKeys(Keys.TAB,Keys.TAB.ENTER);
+		test.log(Status.PASS, "From Date entered successfully.");
+    }
 
 	// Select Department from ComboBox
 	public void selectInComboBox(String department) {
@@ -74,16 +104,17 @@ public class WorkOrderLogPom extends CommonData {
 	}
 
 	// Enter From Date
-	public void enterFromDate(String date) {
-		test.log(Status.INFO, "Entering 'From Date': " + date);
-		fromDate.sendKeys(date);
+	public void enterFromDate(String x) {
+		test.log(Status.INFO, "Entering 'From Date");
+		fromDate.sendKeys(x);
 		test.log(Status.PASS, "From Date entered successfully.");
 	}
 
 	// Enter To Date
-	public void enterToDate(String date) {
+	public void enterToDate(String date) throws InterruptedException {
 		test.log(Status.INFO, "Entering 'To Date': " + date);
-		toDate.sendKeys(Keys.ENTER);
+		Thread.sleep(300);
+		toDate.sendKeys(date);
 		test.log(Status.PASS, "To Date entered successfully.");
 	}
 
