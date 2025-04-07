@@ -8,14 +8,20 @@ import org.testng.annotations.Test;
 
 import com.audree.infotech.pwo2.pages.masters.ClosureInitiationPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class ClosureInitiationTest extends BaseTest {
 
     private ClosureInitiationPom closureInitiationPom;
     private Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+
 
     @BeforeClass
     public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+
         // Initialize POM
         closureInitiationPom = new ClosureInitiationPom(driver, test, pro);
 
@@ -42,6 +48,7 @@ public class ClosureInitiationTest extends BaseTest {
             Thread.sleep(500);
             Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
             Thread.sleep(1000);
+            scrollPagedown();
             closureInitiationPom.closureInitiationActions();
         }
     }

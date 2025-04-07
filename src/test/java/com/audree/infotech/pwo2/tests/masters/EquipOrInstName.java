@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 //import com.audree.infotech.pwo2.pages.masters.EquipOrInstNamePom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class EquipOrInstName extends BaseTest {
 
@@ -15,6 +16,7 @@ public class EquipOrInstName extends BaseTest {
 	// Read the starting and ending rows from the properties file
 	public String equipOrInstName;
 	public String equipOrInstNameUpdate;
+	public Xls_Reader xls;
 
 	@BeforeTest
 	public void setUp() throws Exception {
@@ -29,6 +31,8 @@ public class EquipOrInstName extends BaseTest {
 			logger.info("Starting Create test.");
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			logger.info("Login successful.");
+			xls = new Xls_Reader(
+					System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
 			for (int i = Integer.parseInt(pro.getProperty("startRow")); i <= Integer
 					.parseInt(pro.getProperty("endRow")); i++) {

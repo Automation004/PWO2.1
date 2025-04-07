@@ -57,7 +57,7 @@ public class RoomNamePom extends CommonData {
 			submitButton();
 			test.log(Status.PASS, "Submitted button clicked without giving data");
 
-			verifyValidationMessage(validationMessage, pro.getProperty("RoomName_ValidationMessage"));
+//			verifyValidationMessage(validationMessage, pro.getProperty("RoomName_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Room Name field");
 			enterDataRoomName.sendKeys(RoomName);

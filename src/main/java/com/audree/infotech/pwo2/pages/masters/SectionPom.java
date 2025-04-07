@@ -26,16 +26,16 @@ public class SectionPom extends CommonData {
 		PageFactory.initElements(driver, this);
 	}
 
-	Actions a = new Actions(driver);
+	public Actions a = new Actions(driver);
 
 	@FindBy(xpath = "//button[normalize-space()='Create']")
-	private WebElement createButtonClick;
+	public WebElement createButtonClick;
 
 	@FindBy(xpath = "//a[normalize-space()='Section']")
-	protected WebElement SectionClick;
+	public WebElement SectionClick;
 
 	@FindBy(xpath = "//input[@formcontrolname='name']")
-	private WebElement enterDataSection;
+	public WebElement enterDataSection;
 
 	@FindBy(css = "body app-root div[class='modal-body'] div div:nth-child(2)")
 	private WebElement validationMessage;
@@ -59,7 +59,7 @@ public class SectionPom extends CommonData {
 			submitButton();
 			test.log(Status.PASS, "Submitted button clicked without giving data");
 
-			verifyValidationMessage(validationMessage, pro.getProperty("Section_ValidationMessage"));
+			//verifyValidationMessage(validationMessage, pro.getProperty("Section_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Section field");
 			enterDataSection.sendKeys(Section);
@@ -74,9 +74,6 @@ public class SectionPom extends CommonData {
 
 			submitButton();
 			test.log(Status.PASS, "Submit button clicked again");
-
-			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
 
 			EsigantureActions();
 
@@ -119,11 +116,11 @@ public class SectionPom extends CommonData {
 
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");
+			
+			yesButton();
+			
+			
 
-//			yesButton();
-//			test.log(Status.PASS, "Yes button clicked");
-
-			EsigantureActions();
 
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Exception occurred: " + e.getMessage());

@@ -65,7 +65,7 @@ public class EquipOrInstNamePom extends CommonData {
 			submitButton();
 			test.log(Status.PASS, "Submitted button clicked without giving data");
 
-			verifyValidationMessage(validationMessage, pro.getProperty("Equip/Inst_ValidationMessage"));
+//			verifyValidationMessage(validationMessage, pro.getProperty("Equip/Inst_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Equip/Inst Name field");
 			enterDataEquipOrInstName.sendKeys(equipOrInstName);

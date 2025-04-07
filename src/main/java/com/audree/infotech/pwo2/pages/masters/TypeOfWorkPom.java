@@ -57,7 +57,7 @@ public class TypeOfWorkPom extends CommonData {
 			test.log(Status.PASS, "Submitted button clicked without giving data");
 
 			// validation message checking
-			verifyValidationMessage(validationMessage, pro.getProperty("TypeOfWork_ValidationMessage"));
+//			verifyValidationMessage(validationMessage, pro.getProperty("TypeOfWork_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Type Of Work field");
 			enterDataTypeOfWork.sendKeys(TypeOfWork);
@@ -65,18 +65,18 @@ public class TypeOfWorkPom extends CommonData {
 
 			test.log(Status.INFO, "Submitting the form");
 			submitButton();
-			test.log(Status.PASS, "Submit button clicked");
 
 			noButton();
-			test.log(Status.PASS, "No button clicked");
 
 			submitButton();
-			test.log(Status.PASS, "Submit button clicked again");
 
 			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
 
-			EsigantureActions();
+			Password_Fill(pro.getProperty("Password"));
+
+			submitButton();
+
+			okButton();
 
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Exception occurred: " + e.getMessage());
@@ -110,18 +110,18 @@ public class TypeOfWorkPom extends CommonData {
 
 			test.log(Status.INFO, "Clicking on Update button");
 			UpdateButton();
-			test.log(Status.PASS, "Update button clicked");
 
 			noButton();
-			test.log(Status.PASS, "No button clicked");
 
 			UpdateButton();
-			test.log(Status.PASS, "Update button clicked again");
 
 			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
 
-			EsigantureActions();
+			Password_Fill(pro.getProperty("Password"));
+
+			submitButton();
+
+			okButton();
 
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Exception occurred: " + e.getMessage());

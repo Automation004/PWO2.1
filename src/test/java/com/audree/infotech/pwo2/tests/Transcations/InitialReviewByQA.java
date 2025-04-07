@@ -6,17 +6,20 @@ import java.util.Map;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 
-import com.audree.infotech.pwo2.pages.masters.EnInitialReviewerPom;
 import com.audree.infotech.pwo2.pages.masters.InitiatialReviewByQaPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class InitialReviewByQA extends BaseTest {
 	public InitiatialReviewByQaPom initiatialReviewByQaPom;
 	Map<String, String> excelData = new HashMap<>();
-	
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 		// Pre-Load all required data from Excel
 		initiatialReviewByQaPom = new InitiatialReviewByQaPom(driver, test, pro);
 

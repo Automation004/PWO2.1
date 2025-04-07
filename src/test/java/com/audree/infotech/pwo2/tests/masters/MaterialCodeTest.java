@@ -8,13 +8,19 @@ import org.testng.annotations.Test;
 
 import com.audree.infotech.pwo2.pages.masters.MaterialCodePom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class MaterialCodeTest extends BaseTest {
 	public MaterialCodePom materialCodePom;
 	Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+
 
 	@BeforeClass()
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+
 		materialCodePom = new MaterialCodePom(driver, test, pro);
 		// Pre-Load all required data from Excel
 		// Read the starting and ending rows from the properties file

@@ -2,19 +2,27 @@ package com.audree.infotech.pwo2.tests.Transcations;
 
 import java.util.HashMap;
 import java.util.Map;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import com.audree.infotech.pwo2.pages.masters.WorkOrderInitiationPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 import com.aventstack.extentreports.Status;
 
 public class WorkOrderInitiationTest extends BaseTest {
 	public WorkOrderInitiationPom workOrderInitiationPom;
 	Map<String, String> excelData = new HashMap<>();
 	boolean isEquipment;
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+
 		// Pre-Load all required data from Excel
 		workOrderInitiationPom = new WorkOrderInitiationPom(driver, test, pro);
 		// Read the starting and ending rows from the properties file

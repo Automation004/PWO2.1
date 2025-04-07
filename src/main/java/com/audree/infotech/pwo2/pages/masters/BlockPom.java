@@ -38,36 +38,20 @@ public class BlockPom extends CommonData {
 
 	Actions a = new Actions(driver);
 
-	public void create(String Block) throws Throwable {
-		try {
-			navigateToMasterBlock();
-			clickBlock();
-			clickCreateButton();
-			submitFormWithoutData();
-			verifyBlockValidationMessage();
-			enterBlockData(Block);
-			submitForm();
-			handleConfirmationDialogs();
-		} catch (Exception e) {
-			test.log(Status.FAIL, "Exception occurred: " + e.getMessage());
-			throw e;
-		}
-	}
-
-	private void navigateToMasterBlock() {
+	public void navigateToMasterBlock() {
 		// Click on the Masters section and wait for the dropdown to expand
 		test.log(Status.INFO, "Navigating to Master section");
 		a.moveToElement(masterClick).perform();
 		test.log(Status.PASS, "Master section clicked successfully");
 	}
 
-	private void clickBlock() {
+	public void clickBlock() {
 		test.log(Status.INFO, "Clicking on Block");
 		BlockClick.click();
 		test.log(Status.PASS, "Block clicked successfully");
 	}
 
-	private void clickCreateButton() {
+	public void clickCreateButton() {
 		test.log(Status.INFO, "Clicking on Create button");
 		createButtonClick.click();
 		test.log(Status.PASS, "Create button clicked successfully");
@@ -79,11 +63,11 @@ public class BlockPom extends CommonData {
 		test.log(Status.PASS, "Submitted button clicked without giving data");
 	}
 
-	private void verifyBlockValidationMessage() {
-		verifyValidationMessage(validationMessage, pro.getProperty("Block_ValidationMessage"));
-	}
+//	private void verifyBlockValidationMessage() {
+//		verifyValidationMessage(validationMessage, pro.getProperty("Block_ValidationMessage"));
+//	}
 
-	private void enterBlockData(String Block) {
+	public void enterBlockData(String Block) {
 		test.log(Status.INFO, "Entering data in Block field");
 		enterDataBlock.sendKeys(Block);
 		test.log(Status.PASS, "Data entered in Block field successfully: " + Block);
@@ -126,7 +110,6 @@ public class BlockPom extends CommonData {
 
 			test.log(Status.INFO, "Clicking on Update button");
 			UpdateButton();
-			test.log(Status.PASS, "Update button clicked");
 
 			noButton();
 			test.log(Status.PASS, "No button clicked");
@@ -134,7 +117,13 @@ public class BlockPom extends CommonData {
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");
 
-			EsigantureActions();
+			yesButton();
+
+			Password_Fill(pro.getProperty("Password"));
+
+			submitButton();
+
+			okButton();
 
 		} catch (Exception e) {
 			test.log(Status.FAIL, "Exception occurred: " + e.getMessage());

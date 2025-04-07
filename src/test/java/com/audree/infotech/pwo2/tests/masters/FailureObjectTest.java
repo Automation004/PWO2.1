@@ -3,18 +3,22 @@ package com.audree.infotech.pwo2.tests.masters;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 import com.audree.infotech.pwo2.pages.masters.FailureObjectPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class FailureObjectTest extends BaseTest {
 	public FailureObjectPom failureObjectPom;
 	Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
 
-	@BeforeClass
 	public void setUp() throws Exception {
+		 xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+		
 		failureObjectPom = new FailureObjectPom(driver, test, pro);
 		// Pre-Load all required data from Excel
 		// Read the starting and ending rows from the properties file
@@ -34,14 +38,16 @@ public class FailureObjectTest extends BaseTest {
 	@Test
 	public void Create() throws Exception {
 		try {
+			setUp();
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			failureObjectPom.create(excelData.get("FailureObject"));
+			Thread.sleep(300);
+			Update();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	@Test
 	public void Update() throws Exception {
 		try {
 			failureObjectPom.update(excelData.get("FailureObject"), excelData.get("FailureObjectUpdate"));

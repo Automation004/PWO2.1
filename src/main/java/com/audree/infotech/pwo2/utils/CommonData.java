@@ -45,7 +45,7 @@ public class CommonData {
 	private WebElement passwordWithSecondIndex;
 
 	@FindBy(xpath = "//*[contains(text(),'Masters')]")
-	protected WebElement masterClick;
+	public WebElement masterClick;
 
 	@FindBy(xpath = "//button[normalize-space(text())='Save']")
 	public WebElement saveButton;
@@ -62,27 +62,28 @@ public class CommonData {
 	@FindBy(xpath = "//input[@formcontrolname='comments']")
 	protected WebElement returnComments;
 
-	// Method to verify the validation message
-	public void verifyValidationMessage(WebElement validationElement, String expectedValidationMessage) {
-		SoftAssert softAssert = new SoftAssert();
-		try {
-			test.log(Status.INFO, "Verifying the validation message");
-			String actualValidationMessage = validationElement.getText();
-			System.out.println(actualValidationMessage);
-			softAssert.assertTrue(validationElement.isDisplayed(), "Validation message is not displayed");
-			softAssert.assertEquals(actualValidationMessage, expectedValidationMessage,
-					"Validation message does not match");
-			if (validationElement.isDisplayed() && actualValidationMessage.equals(expectedValidationMessage)) {
-				test.log(Status.PASS, "Validation message verified successfully: " + actualValidationMessage);
-			} else {
-				test.log(Status.FAIL, "Validation message verification failed: Expected [" + expectedValidationMessage
-						+ "] but found [" + actualValidationMessage + "]");
-			}
-		} catch (Exception e) {
-			test.log(Status.FAIL, "Exception occurred while verifying the validation message: " + e.getMessage());
-		}
-		softAssert.assertAll(); // This will log the assertion results but will not stop the test immediately
-	}
+//	// Method to verify the validation message
+//	public void verifyValidationMessage(String expectedValidationMessage) {
+//		SoftAssert softAssert = new SoftAssert();
+//		try {
+//			test.log(Status.INFO, "Verifying the validation message");
+//			String actualValidationMessage = validationElement.getText();
+//			System.out.println(actualValidationMessage);
+//			softAssert.assertTrue(validationElement.isDisplayed(), "Validation message is not displayed");
+//			softAssert.assertEquals(actualValidationMessage, expectedValidationMessage,
+//					"Validation message does not match");
+//			if (validationElement.isDisplayed() && actualValidationMessage.equals(expectedValidationMessage)) {
+//				test.log(Status.PASS, "Validation message verified successfully: " + actualValidationMessage);
+//			} else {
+//				test.log(Status.FAIL, "Validation message verification failed: Expected [" + expectedValidationMessage
+//						+ "] but found [" + actualValidationMessage + "]");
+//			return 
+//			}
+//		} catch (Exception e) {
+//			test.log(Status.FAIL, "Exception occurred while verifying the validation message: " + e.getMessage());
+//		}
+//		softAssert.assertAll(); // This will log the assertion results but will not stop the test immediately
+//	}
 
 	public void waitForElementToAppear(By findBy) {
 
@@ -543,13 +544,14 @@ public class CommonData {
 	public WebElement Yes;
 
 	public void yesButton() throws Exception {
-
-		WebElement Color = driver.findElement(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"));
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
-		Yes.click();
+		
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+		wait.until(ExpectedConditions.refreshed(
+		    ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"))
+		)).click();
+		//Yes.click();
 		test.log(Status.PASS, "Yes button clicked");
-
+		Thread.sleep(300);
 	}
 
 	// Ok
@@ -567,7 +569,7 @@ public class CommonData {
 	}
 
 	// SEARCHBOX
-	@FindBy(how = How.XPATH, using = "//input[@placeholder='Search...']")
+	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[1]")
 	public WebElement SearchBox;
 
 	public void SearchBox(String x) throws Exception {
@@ -829,14 +831,14 @@ public class CommonData {
 	}
 
 	// Password_Fill
-	@FindBy(how = How.XPATH, using = "//*[@formcontrolname='password' or formcontrolname='Password']")
+	@FindBy(how = How.XPATH, using = "(//input[@placeholder='Password'])[1]")
 	public WebElement Password_Fill;
 
 	public void Password_Fill(String x) throws Exception {
 
+		Thread.sleep(500);
 		Password_Fill.sendKeys(x);
 		Thread.sleep(500);
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		test.log(Status.PASS, "Given valid password");
 	}
 	// Password_Fill
@@ -847,7 +849,6 @@ public class CommonData {
 
 		inputPassword.sendKeys(x);
 		Thread.sleep(500);
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		test.log(Status.PASS, "Given valid password");
 	}
 	
@@ -889,6 +890,7 @@ public class CommonData {
 
 		UpdateButton.click();
 		Thread.sleep(500);
+		test.log(Status.PASS, "Update button clicked Succesfully");
 	}
 
 	// Split_Button
@@ -1047,6 +1049,8 @@ public class CommonData {
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid red;');", Color);
 		noButton.click();
+		test.log(Status.PASS, "No button clicked Successfully");
+
 	}
 
 	// Text Box

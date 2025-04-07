@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 import com.audree.infotech.pwo2.tests.masters.WorkOrderLogPom;
 
 public class WorkOrderLogTestReport extends BaseTest {
@@ -14,9 +16,13 @@ public class WorkOrderLogTestReport extends BaseTest {
 	Map<String, String> excelData = new HashMap<>();
 	private String fromDate;
 	private String toDate;
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setup() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 		// Initialize the WorkOrderLogPom Page Object with driver and test instances
 		workOrderLogPom = new WorkOrderLogPom(driver, test);
 

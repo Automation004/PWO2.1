@@ -57,9 +57,9 @@ function toggleAllBoxes() {
 <tr>
 <td>Tests passed/Failed/Skipped:</td><td>0/0/2</td>
 </tr><tr>
-<td>Started on:</td><td>Tue Mar 18 09:35:19 IST 2025</td>
+<td>Started on:</td><td>Mon Apr 07 12:46:17 IST 2025</td>
 </tr>
-<tr><td>Total time:</td><td>0 seconds (39 ms)</td>
+<tr><td>Total time:</td><td>2 seconds (2019 ms)</td>
 </tr><tr>
 <td>Included groups:</td><td></td>
 </tr><tr>
@@ -77,12 +77,39 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.audree.infotech.pwo2.tests.masters.BlockTest.setUp()'><b>setUp</b><br>Test class: com.audree.infotech.pwo2.tests.masters.BlockTest</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+<td><div><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1258527853", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace1258527853'><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace348731252", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace348731252'><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:154)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -91,6 +118,7 @@ function toggleAllBoxes() {
 	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
 	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at org.testng.TestRunner$$Lambda$233/0x0000000800d1adf8.accept(Unknown Source)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at org.testng.TestRunner.privateRun(TestRunner.java:739)
 	at org.testng.TestRunner.run(TestRunner.java:614)
@@ -99,36 +127,9 @@ function toggleAllBoxes() {
 	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
-<td>0</td>
-<td>com.audree.infotech.pwo2.tests.masters.BlockTest@3b2c0e88</td></tr>
-</table><p>
-<table width='100%' border='1' class='invocation-skipped'>
-<tr><td colspan='4' align='center'><b>SKIPPED CONFIGURATIONS</b></td></tr>
-<tr><td><b>Test method</b></td>
-<td><b>Attribute(s)</b></td>
-<td width="30%"><b>Exception</b></td>
-<td width="10%"><b>Time (seconds)</b></td>
-<td><b>Instance</b></td>
-</tr>
-<tr>
-<td title='com.audree.infotech.pwo2.tests.masters.BlockTest.EndReport()'><b>EndReport</b><br>Test class: com.audree.infotech.pwo2.tests.masters.BlockTest</td>
-<td></td>
-<td>0</td>
-<td>com.audree.infotech.pwo2.tests.masters.BlockTest@3b2c0e88</td></tr>
-<tr>
-<td title='com.audree.infotech.pwo2.tests.masters.BlockTest.EndReport()'><b>EndReport</b><br>Test class: com.audree.infotech.pwo2.tests.masters.BlockTest</td>
-<td></td>
-<td>0</td>
-<td>com.audree.infotech.pwo2.tests.masters.BlockTest@3b2c0e88</td></tr>
+<td>2</td>
+<td>com.audree.infotech.pwo2.tests.masters.BlockTest@2b4bac49</td></tr>
 </table><p>
 <table width='100%' border='1' class='invocation-skipped'>
 <tr><td colspan='4' align='center'><b>SKIPPED TESTS</b></td></tr>
@@ -140,12 +141,39 @@ function toggleAllBoxes() {
 </tr>
 <tr>
 <td title='com.audree.infotech.pwo2.tests.masters.BlockTest.Update()'><b>Update</b><br>Test class: com.audree.infotech.pwo2.tests.masters.BlockTest</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+<td><div><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace871153004", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace871153004'><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1332038894", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1332038894'><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:154)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -154,6 +182,7 @@ function toggleAllBoxes() {
 	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
 	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at org.testng.TestRunner$$Lambda$233/0x0000000800d1adf8.accept(Unknown Source)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at org.testng.TestRunner.privateRun(TestRunner.java:739)
 	at org.testng.TestRunner.run(TestRunner.java:614)
@@ -162,25 +191,44 @@ function toggleAllBoxes() {
 	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.audree.infotech.pwo2.tests.masters.BlockTest@3b2c0e88</td></tr>
+<td>com.audree.infotech.pwo2.tests.masters.BlockTest@2b4bac49</td></tr>
 <tr>
 <td title='com.audree.infotech.pwo2.tests.masters.BlockTest.Create()'><b>Create</b><br>Test class: com.audree.infotech.pwo2.tests.masters.BlockTest</td>
-<td><div><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+<td><div><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
-... Removed 23 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace140702728", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
-<div class='stack-trace' id='stack-trace140702728'><pre>java.lang.NullPointerException: Cannot invoke &quot;java.util.Properties.getProperty(String)&quot; because &quot;this.pro&quot; is null
+... Removed 17 stack frames</pre></div><a href='#' onClick='toggleBox("stack-trace1835529707", this, "Click to show all stack frames", "Click to hide stack frames")'>Click to show all stack frames</a>
+<div class='stack-trace' id='stack-trace1835529707'><pre>java.lang.OutOfMemoryError: Java heap space
+	at java.base/java.io.ByteArrayOutputStream.&lt;init&gt;(ByteArrayOutputStream.java:81)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:177)
+	at org.apache.poi.util.IOUtils.toByteArray(IOUtils.java:149)
+	at org.apache.poi.openxml4j.util.ZipArchiveFakeEntry.&lt;init&gt;(ZipArchiveFakeEntry.java:47)
+	at org.apache.poi.openxml4j.util.ZipInputStreamZipEntrySource.&lt;init&gt;(ZipInputStreamZipEntrySource.java:53)
+	at org.apache.poi.openxml4j.opc.ZipPackage.&lt;init&gt;(ZipPackage.java:106)
+	at org.apache.poi.openxml4j.opc.OPCPackage.open(OPCPackage.java:307)
+	at org.apache.poi.ooxml.util.PackageHelper.open(PackageHelper.java:47)
+	at org.apache.poi.xssf.usermodel.XSSFWorkbook.&lt;init&gt;(XSSFWorkbook.java:309)
+	at com.audree.infotech.pwo2.testcomponents.Xls_Reader.&lt;init&gt;(Xls_Reader.java:25)
 	at com.audree.infotech.pwo2.tests.masters.BlockTest.setUp(BlockTest.java:19)
+	at java.base/java.lang.invoke.LambdaForm$DMH/0x0000000800d20000.invokeVirtual(LambdaForm$DMH)
+	at java.base/java.lang.invoke.LambdaForm$MH/0x0000000800cb9c00.invoke(LambdaForm$MH)
+	at java.base/java.lang.invoke.Invokers$Holder.invokeExact_MT(Invokers$Holder)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invokeImpl(DirectMethodHandleAccessor.java:154)
 	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
 	at java.base/java.lang.reflect.Method.invoke(Method.java:577)
 	at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
@@ -189,6 +237,7 @@ function toggleAllBoxes() {
 	at org.testng.internal.invokers.ConfigInvoker.invokeConfigurations(ConfigInvoker.java:333)
 	at org.testng.internal.invokers.TestMethodWorker.invokeBeforeClassMethods(TestMethodWorker.java:188)
 	at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:128)
+	at org.testng.TestRunner$$Lambda$233/0x0000000800d1adf8.accept(Unknown Source)
 	at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
 	at org.testng.TestRunner.privateRun(TestRunner.java:739)
 	at org.testng.TestRunner.run(TestRunner.java:614)
@@ -197,17 +246,9 @@ function toggleAllBoxes() {
 	at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
 	at org.testng.SuiteRunner.run(SuiteRunner.java:312)
 	at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
-	at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
-	at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
-	at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
-	at org.testng.TestNG.runSuites(TestNG.java:1112)
-	at org.testng.TestNG.run(TestNG.java:1079)
-	at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
-	at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
-	at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
 </pre></div></td>
 <td>0</td>
-<td>com.audree.infotech.pwo2.tests.masters.BlockTest@3b2c0e88</td></tr>
+<td>com.audree.infotech.pwo2.tests.masters.BlockTest@2b4bac49</td></tr>
 </table><p>
 </body>
 </html>

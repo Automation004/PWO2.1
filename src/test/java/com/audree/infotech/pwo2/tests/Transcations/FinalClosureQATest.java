@@ -9,13 +9,19 @@ import org.testng.annotations.Test;
 
 import com.audree.infotech.pwo2.pages.masters.FinalClosurePom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class FinalClosureQATest extends BaseTest {
 	public FinalClosurePom finalClosurePom;
 	Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+
 		// Pre-Load all required data from Excel
 		finalClosurePom = new FinalClosurePom(driver, test, pro);
 		// Read the starting and ending rows from the properties file

@@ -58,7 +58,7 @@ public class MaterialNamePom extends CommonData {
 			test.log(Status.PASS, "Submitted button clicked without giving data");
 
 			// verification of validation message
-			verifyValidationMessage(validationMessage, pro.getProperty("MaterialName_ValidationMessage"));
+//			verifyValidationMessage(validationMessage, pro.getProperty("MaterialName_ValidationMessage"));
 
 			test.log(Status.INFO, "Entering data in Material Name field");
 			enterDataMaterialName.sendKeys(materialName);

@@ -1,17 +1,25 @@
 package com.audree.infotech.pwo2.tests.Transcations;
 import java.util.HashMap;
 import java.util.Map;
+
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+
 import com.audree.infotech.pwo2.pages.masters.WorkUnderProgressPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class WorkUnderProgressTest extends BaseTest {
 	public WorkUnderProgressPom workUnderProgressPom;
 	Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+
 		// Pre-Load all required data from Excel
 		workUnderProgressPom = new WorkUnderProgressPom(driver, test, pro);
 

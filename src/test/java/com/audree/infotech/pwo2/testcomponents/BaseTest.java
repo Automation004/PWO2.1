@@ -29,12 +29,11 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterSuite;
-import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeClass;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.ExtentTest;
-import com.aventstack.extentreports.reporter.ExtentHtmlReporter;
+import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import com.aventstack.extentreports.reporter.configuration.Theme;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -42,19 +41,15 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 @SuppressWarnings("deprecation")
 public class BaseTest {
 	public static WebDriver driver;
-	ExtentHtmlReporter Report;
+	ExtentSparkReporter Report;
 	public static ExtentReports extent;
 	public ExtentTest test;
 	public Properties pro;
 	public Robot r;
 	public WebDriverWait wait;// globally declared
 
-	public Xls_Reader xls = new Xls_Reader(
-			System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
-
 	@BeforeClass(alwaysRun = true)
 	public void suiteSetUp() throws Exception {
-		if (driver == null) {
 			pro = new Properties();
 			FileInputStream ip = new FileInputStream(
 					System.getProperty("user.dir") + "\\src\\test\\resources\\com.properties\\config.properties");
@@ -69,13 +64,12 @@ public class BaseTest {
 			extent = getReportObject(this.getClass().getSimpleName());
 			test = extent.createTest(this.getClass().getSimpleName());
 		}
-	}
 
 	public static ExtentReports getReportObject(String testName) {
 		if (extent == null) { // Only initialize if extent is null
 			String timeStamp = new SimpleDateFormat("yyyy.MM.dd--HH.mm.ss").format(new Date());// time stamp
 			String repName = testName + " Test-Report-" + timeStamp + ".html";
-			ExtentHtmlReporter reporter = new ExtentHtmlReporter(
+			ExtentSparkReporter reporter = new ExtentSparkReporter(
 					System.getProperty("user.dir") + "/Reports/" + repName);
 			reporter.config().setEncoding("utf-8");
 			reporter.config().setReportName("Automation Test Result");
@@ -98,11 +92,13 @@ public class BaseTest {
 		extent = getReportObject(this.getClass().getSimpleName());
 		test = extent.createTest(this.getClass().getSimpleName());
 	}
-	
-	@AfterTest
-	public void tearDown() {
-		driver.close();
-	}
+
+//	@AfterClass
+//	public void tearDown() {
+//		if (driver != null) {
+//			driver.quit(); // better than close() for full cleanup
+//		}
+//	}
 
 	@AfterSuite()
 	public void EndReport() {

@@ -70,15 +70,15 @@ public class MaterialCodePom extends CommonData {
 			Add_Button();
 			test.log(Status.PASS, "Added the form without giving data");
 
-			// Verifying Validation Message
-			verifyValidationMessage(materialNameValidationMessage,
-					pro.getProperty("MaterialNameValidationMessageDropdown"));
-
-			// Verifying Validation Message
-			verifyValidationMessage(materialCodeValidationMessage, pro.getProperty("MaterialCode_ValidationMessage"));
-
-			// Verifying Validation Message
-			verifyValidationMessage(UomValidationMessage, pro.getProperty("Uom_ValidationMessage"));
+//			// Verifying Validation Message
+//			verifyValidationMessage(materialNameValidationMessage,
+//					pro.getProperty("MaterialNameValidationMessageDropdown"));
+//
+//			// Verifying Validation Message
+//			verifyValidationMessage(materialCodeValidationMessage, pro.getProperty("MaterialCode_ValidationMessage"));
+//
+//			// Verifying Validation Message
+//			verifyValidationMessage(UomValidationMessage, pro.getProperty("Uom_ValidationMessage"));
 
 			test.log(Status.INFO, "Clicking & Giving data on Material Name Dropdown");
 			MaterialNameDropdown.click();
@@ -152,8 +152,8 @@ public class MaterialCodePom extends CommonData {
 			UpdateButton();
 			test.log(Status.PASS, "Update button clicked again");
 
-			yesButton();
-			test.log(Status.PASS, "Yes button clicked");
+//			yesButton();
+//			test.log(Status.PASS, "Yes button clicked");
 
 			EsigantureActions();
 

@@ -8,14 +8,19 @@ import org.testng.annotations.Test;
 
 import com.audree.infotech.pwo2.pages.masters.MaterialNamePom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 import com.aventstack.extentreports.Status;
 
 public class MaterialNameTest extends BaseTest {
 	private MaterialNamePom materialNamePom;
 	private Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+
 
 	@BeforeClass
 	public void setUp() throws Exception {
+		xls = new Xls_Reader(
+				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 		materialNamePom = new MaterialNamePom(driver, test, pro);
 		int startRow = Integer.parseInt(pro.getProperty("startRow"));
 		int endRow = Integer.parseInt(pro.getProperty("endRow"));

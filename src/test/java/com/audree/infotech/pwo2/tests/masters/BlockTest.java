@@ -1,48 +1,55 @@
 package com.audree.infotech.pwo2.tests.masters;
-import java.util.HashMap;
-import java.util.Map;
-import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import com.audree.infotech.pwo2.pages.masters.BlockPom;
 import com.audree.infotech.pwo2.testcomponents.BaseTest;
+import com.audree.infotech.pwo2.testcomponents.Xls_Reader;
 
 public class BlockTest extends BaseTest {
 	public BlockPom blockPom;
-	Map<String, String> excelData = new HashMap<>();
+	public Xls_Reader xls;
+	String Block;
+	String BlockUpdate;
 
-	@BeforeClass
-	public void setUp() throws Exception
-	{
+	public void setUp() throws Exception {
+		xls = new Xls_Reader(System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 		blockPom = new BlockPom(driver, test, pro);
-		// Pre-Load all required data from Excel
-		// Read the starting and ending rows from the properties file
-		int startRow = Integer.parseInt(pro.getProperty("startRow"));
-		int endRow = Integer.parseInt(pro.getProperty("endRow"));
-		for (int i = startRow; i <= endRow; i++)
-		{
-			excelData.put("Block", xls.getCellData("MasterData", "Block", i));
-			excelData.put("BlockUpdate", xls.getCellData("MasterData", "BlockUpdate", i));
-			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
-			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
-			excelData.put("EN Reviewer", xls.getCellData("Credentials", "EN Reviewer", i));
-
-		}
 	}
 
 	@Test
 	public void Create() throws Throwable {
 		try {
-			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
-			blockPom.create(excelData.get("Block"));
+			setUp();
+			// Read the starting and ending rows from the properties file
+			int startRow = Integer.parseInt(pro.getProperty("startRow"));
+			int endRow = Integer.parseInt(pro.getProperty("endRow"));
+			for (int i = startRow; i <= endRow; i++) {
+				Block = xls.getCellData("MasterData", "Block", i);
+				BlockUpdate = xls.getCellData("MasterData", "BlockUpdate", i);
+
+				Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
+				blockPom.navigateToMasterBlock();
+				blockPom.clickBlock();
+				blockPom.clickCreateButton();
+				blockPom.submitButton();
+				blockPom.enterBlockData(Block);
+				blockPom.submitButton();
+				blockPom.noButton();
+				blockPom.submitButton();
+				blockPom.yesButton();
+				blockPom.Password_Fill(pro.getProperty("Password"));
+				blockPom.submitButton();
+				blockPom.okButton();
+				Thread.sleep(300);
+				Update();
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	@Test
 	public void Update() throws Exception {
 		try {
-			blockPom.update(excelData.get("Block"), excelData.get("BlockUpdate"));
+			blockPom.update(Block, BlockUpdate);
 		} catch (Exception e) {
 			System.out.println(e);
 		}

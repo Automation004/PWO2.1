@@ -5,37 +5,40 @@
 	<groupId>com.audreeinfotech</groupId>
 	<artifactId>pwo2.0</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<dependencies>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-java</artifactId>
 			<version>4.9.0</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
 			<version>7.10.2</version>
-			<scope>test</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-http-jdk-client</artifactId>
 			<version>4.5.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.apache.poi</groupId>
 			<artifactId>poi-ooxml</artifactId>
 			<version>4.1.2</version>
 		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
-			<version>5.0.9</version>
+			<version>5.1.2</version>
 		</dependency>
+
 		<!--
 		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
@@ -43,28 +46,67 @@
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.4.1</version>
 		</dependency>
-		<dependency>
-			<groupId>fr.opensagres.xdocreport</groupId>
-			<artifactId>fr.opensagres.poi.xwpf.converter.pdf</artifactId>
-			<version>2.0.2</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
-		<dependency>
-			<groupId>com.aventstack</groupId>
-			<artifactId>extentreports</artifactId>
-			<version>3.0.1</version>
-		</dependency>
-		
-		<!--		<dependency>
-			<groupId>UMS</groupId>
-		<artifactId>UMS</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>LIRProjectQA</groupId>
-		<artifactId>LIRProjectQA</artifactId>
-			<version>0.0.1-SNAPSHOT</version>
-		</dependency>
--->
+
 	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+					<argLine>-Xmx2048m</argLine>
+				</configuration>
+			</plugin>
+
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>InitiationByUser</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.5.3</version>
+						<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>
+									src/test/resources/ConfigurationTests/07_InitiatorSubmitting.xml
+								</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
+	<!-- 
+		<profile>
+			<id>InitialReviewByEn</id>
+			<build>
+				<plugins>
+	<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+	<artifactId>maven-surefire-plugin</artifactId>
+						<version>3.5.3</version>
+	<configuration>
+							<suiteXmlFiles>
+								<suiteXmlFile>
+	com.audree.infotech.pwo2.config/08_EN
+									Initial
+	Review</suiteXmlFile>
+							</suiteXmlFiles>
+						</configuration>
+	</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>-->
+
+
 </project>
