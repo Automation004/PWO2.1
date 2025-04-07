@@ -181,7 +181,7 @@ public class BaseTest {
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(2000);
 		//Added
-		System.out.println("CI/CD");
+		System.out.println("CI/CD-integration");
 	}
 
 	// ***************************************************************************************************
