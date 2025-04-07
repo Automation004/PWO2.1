@@ -180,6 +180,8 @@ public class BaseTest {
 		JavascriptExecutor js = (JavascriptExecutor) driver;
 		js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
 		Thread.sleep(2000);
+		//Added
+		System.out.println("Rahul");
 	}
 
 	// ***************************************************************************************************
