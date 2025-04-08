@@ -36,7 +36,6 @@ public class WorkOrderLogTestReport extends BaseTest {
 		fromDate = pro.getProperty("fromDate");
 		toDate = pro.getProperty("toDate");
 		
-		// Login to the application using the base method from BaseTest
 		Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 
 	}

@@ -563,15 +563,15 @@ public class CommonData {
 		SearchBox.sendKeys(x);
 	}
 	
-	// SEARCHBOX
-	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[6]")
-	public WebElement SearchBox06;
-
-	public void SearchBox06(String x) throws Exception {
-		SearchBox06.click();
-		SearchBox06.clear();
-		SearchBox06.sendKeys(x);
-	}
+//	// SEARCHBOX
+//	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[6]")
+//	public WebElement SearchBox06;
+//
+//	public void SearchBox06(String x) throws Exception {
+//		SearchBox06.click();
+//		SearchBox06.clear();
+//		SearchBox06.sendKeys(x);
+//	}
 	
 	// SEARCHBOX
 	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[13]")

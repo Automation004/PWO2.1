@@ -20,7 +20,7 @@ public class InitialReviewByQA extends BaseTest {
 	public void setUp() throws Exception {
 		xls = new Xls_Reader(
 				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
-		// Pre-Load all required data from Excel
+		// PreLoad all required data from Excel
 		initiatialReviewByQaPom = new InitiatialReviewByQaPom(driver, test, pro);
 
 		// Read the starting and ending rows from the properties file
@@ -37,7 +37,8 @@ public class InitialReviewByQA extends BaseTest {
 
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
-
+			
+			System.out.println("Login Process Started");
 			Login(pro.getProperty("QAReview"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 			initiatialReviewByQaPom.initialReview();
