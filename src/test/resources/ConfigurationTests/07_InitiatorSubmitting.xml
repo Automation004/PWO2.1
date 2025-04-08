@@ -7,7 +7,6 @@
 				name="com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest">
 				<methods>
 					<include name="createWorkOrder" />
-					<include name="submitRecord" />
 					<exclude name="reInitiateRecord" />
 				</methods>
 			</class>

@@ -1,5 +1,4 @@
 package com.audree.infotech.pwo2.tests.Transcations;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,13 +16,11 @@ public class WorkOrderInitiationTest extends BaseTest {
 	boolean isEquipment;
 	public Xls_Reader xls;
 
-
 	@BeforeClass
 	public void setUp() throws Exception {
-		xls = new Xls_Reader(
-				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+		xls = new Xls_Reader(System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
-		// Pre-Load all required data from Excel
+		// PreLoad all required data from Excel
 		workOrderInitiationPom = new WorkOrderInitiationPom(driver, test, pro);
 		// Read the starting and ending rows from the properties file
 		int startRow = Integer.parseInt(pro.getProperty("startRow"));
@@ -43,10 +40,8 @@ public class WorkOrderInitiationTest extends BaseTest {
 			excelData.put("RoomNameUpdate", xls.getCellData("MasterData", "RoomNameUpdate", i));
 			excelData.put("InitiatedBy", xls.getCellData("MasterData", "InitiatedBy", i));
 			excelData.put("Status", xls.getCellData("MasterData", "Status", i));
-
-			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
-			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
-
+			
+			System.out.println("Login with Initiator");
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			Thread.sleep(1000);
 		}
@@ -75,17 +70,19 @@ public class WorkOrderInitiationTest extends BaseTest {
 			Thread.sleep(3000);
 			workOrderInitiationPom.descriptionOfWork(excelData.get("DescriptionOfWork"));
 			scrollPagedown();
+			Thread.sleep(1000);
+			submitRecord();
 		} catch (Exception e) {
 			System.out.println(e);
 		}
 	}
 
-	@Test
 	public void submitRecord() throws Exception {
 		try {
 			workOrderInitiationPom.submitAction();
 			System.out.println("Record Submitted Successfully");
 			// After submitting the record, validate the Initiated tab
+			
 			initiatedTab();
 		} catch (Exception e) {
 			// Handling any other general exceptions
@@ -118,12 +115,13 @@ public class WorkOrderInitiationTest extends BaseTest {
 
 	public void initiatedTab() throws Exception {
 		try {
+			Thread.sleep(1000);
 			if (isEquipment) {
 				workOrderInitiationPom.initiatedTab(excelData.get("EquipOrInstIdUpdate"));
 
 				workOrderInitiationPom.validateWorkOrderInTable(excelData.get("Department"),
 						excelData.get("EquipOrInstNameUpdate"), excelData.get("EquipOrInstIdUpdate"),
-						excelData.get("RoomNameUpdate"), excelData.get("RoomIdUpdate"),
+						excelData.get("RoomNameUpdate"), excelData.get("RoomId"),
 						excelData.get("DescriptionOfWork"), excelData.get("InitiatedBy"));
 			} else {
 				workOrderInitiationPom.initiatedTab(excelData.get("RoomIdUpdate"));

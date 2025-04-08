@@ -129,7 +129,6 @@ public class CommonData {
 		saveButton.click();
 		test.log(Status.PASS, "Save button clicked");
 		yesButton();
-		test.log(Status.PASS, "Yes button clicked");
 		password.sendKeys(pro.getProperty("Password"));
 		test.log(Status.PASS, "password given by user");
 		try {
@@ -144,9 +143,7 @@ public class CommonData {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		test.log(Status.PASS, "Submit button clicked again");
 		okButton();
-		test.log(Status.PASS, "OK button clicked");
 	}
 
 	public void submitEsigantureActions() throws Exception {
@@ -196,24 +193,16 @@ public class CommonData {
 	public void firstSaveEsigantureActionsForWUP() throws Exception {
 		test.log(Status.PASS, "Save button clicked");
 		yesButton();
-		test.log(Status.PASS, "Yes button clicked");
 		password.sendKeys(pro.getProperty("Password2"));
-		test.log(Status.PASS, "password given by user");
 		submitButton3();
-		test.log(Status.PASS, "Submit button clicked");
 		okButton();
-		test.log(Status.PASS, "OK button clicked");
 	}
 
 	public void firstSubmitEsigantureActionsForWUP() throws Exception {
 		yesButton();
-		test.log(Status.PASS, "Yes button clicked");
 		password.sendKeys(pro.getProperty("Password2"));
-		test.log(Status.PASS, "password given by user");
 		submitButton3();
-		test.log(Status.PASS, "Submit button clicked");
 		okButton();
-		test.log(Status.PASS, "OK button clicked");
 	}
 
 	// Helper method to check if the element is present
@@ -295,10 +284,11 @@ public class CommonData {
 		SubmitText01.click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 	}
-	
+
 	@FindBy(how = How.XPATH, using = "(//button[contains(text(),'Submit')])[2]")
 	public WebElement submit_Button2;
-	
+
+	@SuppressWarnings("deprecation")
 	public void clickSubmitButton2() throws Exception {
 		Thread.sleep(500);
 		submit_Button2.click();
@@ -374,12 +364,8 @@ public class CommonData {
 	@FindBy(how = How.XPATH, using = "//*[@type='submit' or @ title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]")
 	public WebElement Submit;
 
+	@SuppressWarnings("deprecation")
 	public void Submit() throws Exception {
-		WebElement Color = driver.findElement(By.xpath(
-				"//*[@type='submit' or @ title='submit' or contains(text(),'Submit') or contains(text(),'Save') or contains(text(),'Verify')]"));
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
-
 		Submit.click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
 		Thread.sleep(500);
@@ -420,6 +406,7 @@ public class CommonData {
 	public void submitButton3() throws Exception {
 		Submit_Text_03.click();
 		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+		test.log(Status.PASS, "Submit button clicked");
 	}
 
 	// *********************************************************************************************************************
@@ -544,13 +531,12 @@ public class CommonData {
 	public WebElement Yes;
 
 	public void yesButton() throws Exception {
-		
+
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-		wait.until(ExpectedConditions.refreshed(
-		    ExpectedConditions.elementToBeClickable(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]"))
-		)).click();
-		//Yes.click();
-		test.log(Status.PASS, "Yes button clicked");
+		wait.until(ExpectedConditions.refreshed(ExpectedConditions
+				.elementToBeClickable(By.xpath("//button[contains(text(),'Yes') or contains(text(),'yes')]")))).click();
+		// Yes.click();
+		test.log(Status.PASS, "Yes button clicked Successfully");
 		Thread.sleep(300);
 	}
 
@@ -559,12 +545,11 @@ public class CommonData {
 	public WebElement Ok;
 
 	public void okButton() throws Exception {
-
 		WebElement Color = driver.findElement(By.xpath("//button[contains(text(),'OK') or contains(text(),'Ok')]"));
 		JavascriptExecutor Js = (JavascriptExecutor) driver;
 		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", Color);
 		Ok.click();
-		test.log(Status.PASS, "Ok button clicked");
+		test.log(Status.PASS, "Ok button clicked Successfully");
 
 	}
 
@@ -573,11 +558,29 @@ public class CommonData {
 	public WebElement SearchBox;
 
 	public void SearchBox(String x) throws Exception {
-		JavascriptExecutor Js = (JavascriptExecutor) driver;
-		Js.executeScript("arguments[0].setAttribute('style', 'background: ; border: 4px solid black;');", SearchBox);
 		SearchBox.click();
 		SearchBox.clear();
 		SearchBox.sendKeys(x);
+	}
+	
+	// SEARCHBOX
+	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[6]")
+	public WebElement SearchBox06;
+
+	public void SearchBox06(String x) throws Exception {
+		SearchBox06.click();
+		SearchBox06.clear();
+		SearchBox06.sendKeys(x);
+	}
+	
+	// SEARCHBOX
+	@FindBy(how = How.XPATH, using = "(//input[starts-with(@placeholder, 'Search')])[13]")
+	public WebElement SearchBox13;
+
+	public void SearchBox13(String x) throws Exception {
+		SearchBox13.click();
+		SearchBox13.clear();
+		SearchBox13.sendKeys(x);
 	}
 
 	public void SearchBox2(String x) throws Exception {
@@ -841,6 +844,7 @@ public class CommonData {
 		Thread.sleep(500);
 		test.log(Status.PASS, "Given valid password");
 	}
+
 	// Password_Fill
 	@FindBy(how = How.XPATH, using = "//input[@placeholder='Password']")
 	public WebElement inputPassword;
@@ -851,7 +855,6 @@ public class CommonData {
 		Thread.sleep(500);
 		test.log(Status.PASS, "Given valid password");
 	}
-	
 
 	// Return
 	@FindBy(how = How.XPATH, using = "//button[normalize-space(text())='Return']")
@@ -1102,7 +1105,7 @@ public class CommonData {
 
 	@FindBy(xpath = "(//*[@type='radio'])[4]")
 	public WebElement Radio_Button_4;
-	
+
 	public void radioButton1() throws Exception {
 		Radio_Button_1.click();
 		Thread.sleep(300);
@@ -1118,6 +1121,7 @@ public class CommonData {
 		Thread.sleep(300);
 
 	}
+
 	public void radioButton4() throws Exception {
 		Radio_Button_3.click();
 		Thread.sleep(300);

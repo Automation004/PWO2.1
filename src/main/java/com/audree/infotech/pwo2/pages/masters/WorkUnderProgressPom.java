@@ -40,8 +40,9 @@ public class WorkUnderProgressPom extends CommonData {
 	@FindBy(xpath = "//textarea[@formcontrolname='comments']")
 	WebElement commentsFeild;
 
-	public void workUnderProgress() {
+	public void workUnderProgress() throws Exception {
 		test.log(Status.INFO, "Clicking on the 'Working Under Progress' tab.");
+		Thread.sleep(500);
 		workUnderProgresstdashBoard.click();
 		test.log(Status.PASS, "'Working Under Progress' tab clicked successfully.");
 	}
@@ -68,7 +69,6 @@ public class WorkUnderProgressPom extends CommonData {
 		test.log(Status.PASS, "Entered Activity: " + activity);
 		saveButton();
 		firstSaveEsigantureActionsForWUP();
-		test.log(Status.PASS, "Clicked Save");
 	}
 
 	public void enterActivityAndSubmit(String activity) throws Exception {

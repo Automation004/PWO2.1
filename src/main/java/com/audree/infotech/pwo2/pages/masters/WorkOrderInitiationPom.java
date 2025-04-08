@@ -35,7 +35,7 @@ public class WorkOrderInitiationPom extends CommonData {
 	private WebElement InitiateTabClick;
 
 	@FindBy(xpath = "//div[contains(text(),'Initiated')]")
-	private WebElement InitiatedtabClick;
+	public WebElement InitiatedtabClick;
 
 	@FindBy(xpath = "//div[contains(text(),'InProgress')]")
 	private WebElement InProgresstabClick;
@@ -97,7 +97,8 @@ public class WorkOrderInitiationPom extends CommonData {
 	@FindBy(how = How.XPATH, using = "//input[@placeholder='Search...']")
 	public WebElement SearchBox;
 
-	public void initiation() {
+	public void initiation() throws InterruptedException {
+		Thread.sleep(200);
 		test.log(Status.INFO, "Clicking on the 'Initiate' tab.");
 		InitiateTabClick.click();
 		test.log(Status.PASS, "'Initiate' tab clicked successfully.");
@@ -141,6 +142,7 @@ public class WorkOrderInitiationPom extends CommonData {
 	}
 
 	public void initiatedTab(String equipIdOrRoomId) throws Exception {
+		Thread.sleep(500);
 		test.log(Status.INFO, "Clicking on the 'Initiated' tab.");
 		InitiatedtabClick.click();
 		test.log(Status.PASS, "'Initiated' tab clicked successfully.");

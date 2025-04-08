@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
+
 import com.audree.infotech.pwo2.utils.CommonData;
 import com.aventstack.extentreports.ExtentTest;
 import com.aventstack.extentreports.Status;
@@ -52,6 +54,9 @@ public class WorkOrderLogPom extends CommonData {
 	@FindBy(xpath = "//input[@id='yearly']")
 	private WebElement radioYearly;
 
+	@FindBy(xpath = "(//span[@class='dropdown-multiselect__caret'])[6]")
+	private WebElement equipIdClick;
+
 	// Actions
 
 	// Navigate to Work Order Log
@@ -75,18 +80,18 @@ public class WorkOrderLogPom extends CommonData {
 		test.log(Status.PASS, "'Work Order trend' tab clicked successfully.");
 	}
 
-	public void selectRadioYearly() {
+	public void selectRadioYearly() throws Exception {
 		test.log(Status.PASS, "Selecting the radio button Yearly");
-		radioYearly.click();
+		radioButton1();
 		test.log(Status.PASS, "Selected the radio button Yearly");
 	}
-	
-    public void FromDate(String date) {
+
+	public void FromDate(String date) {
 		test.log(Status.INFO, "Entering 'From Date': " + date);
-        fromDate.click();
-        fromDate.sendKeys(Keys.TAB,Keys.TAB.ENTER);
+		fromDate.click();
+		fromDate.sendKeys(Keys.TAB, Keys.ENTER);
 		test.log(Status.PASS, "From Date entered successfully.");
-    }
+	}
 
 	// Select Department from ComboBox
 	public void selectInComboBox(String department) {
@@ -134,6 +139,15 @@ public class WorkOrderLogPom extends CommonData {
 		test.log(Status.INFO, "Clicking on 'Get' button.");
 		getButton.click();
 		test.log(Status.PASS, "'Get' button clicked successfully.");
+	}
+
+	// Click Get Button
+	public void searchEquipOrInstId(String x) throws Exception {
+		test.log(Status.INFO, "Searching Equipment/Inst Id");
+		equipIdClick.click();
+		SearchBox06(x);
+
+		test.log(Status.INFO, "Searched Equipment/Inst Id Successfully");
 	}
 
 	// Scroll Down

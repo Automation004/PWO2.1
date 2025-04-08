@@ -42,9 +42,6 @@ public class WorkUnderClosure extends BaseTest {
 			excelData.put("RoomIdUpdate", xls.getCellData("MasterData", "RoomIdUpdate", i));
 			excelData.put("EquipOrInstIdUpdate", xls.getCellData("MasterData", "EquipOrInstIdUpdate", i));
 
-			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
-			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
-
 			Login(pro.getProperty("WorkdoneEN"), pro.getProperty("Password"));
 			Thread.sleep(1000);
 			workUnderClosurePom.workUnderClosure();

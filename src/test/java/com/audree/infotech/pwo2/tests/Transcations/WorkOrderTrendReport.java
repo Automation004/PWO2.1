@@ -18,11 +18,9 @@ public class WorkOrderTrendReport extends BaseTest {
 	private String toDate;
 	public Xls_Reader xls;
 
-
 	@BeforeClass
 	public void setup() throws Exception {
-		xls = new Xls_Reader(
-				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
+		xls = new Xls_Reader(System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
 		// Initialize the WorkOrderLogPom Page Object with driver and test instances
 		workOrderLogPom = new WorkOrderLogPom(driver, test);
@@ -36,7 +34,7 @@ public class WorkOrderTrendReport extends BaseTest {
 		}
 		fromDate = pro.getProperty("fromDate");
 		toDate = pro.getProperty("toDate");
-		
+
 		// Login to the application using the base method from BaseTest
 		Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 
@@ -48,10 +46,12 @@ public class WorkOrderTrendReport extends BaseTest {
 		workOrderLogPom.navigateToWorkOrderTrend();
 		workOrderLogPom.selectRadioYearly();
 		workOrderLogPom.enterFromDate(fromDate);
+		workOrderLogPom.enterToDate(toDate);
 		workOrderLogPom.Submit();
-		workOrderLogPom.SearchBox(excelData.get("EquipOrInstIdUpdate"));
+		workOrderLogPom.scrollDown();
+		workOrderLogPom.SearchBox13(excelData.get("EquipOrInstIdUpdate"));
 		// Scroll for visibility (optional)
 		workOrderLogPom.scrollDown();
-		workOrderLogPom.scrollUp();
+		
 	}
 }

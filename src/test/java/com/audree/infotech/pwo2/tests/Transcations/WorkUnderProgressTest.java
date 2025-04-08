@@ -20,7 +20,7 @@ public class WorkUnderProgressTest extends BaseTest {
 		xls = new Xls_Reader(
 				System.getProperty("user.dir") + "\\src\\test\\resources\\com.exceldata\\pwo2.1.xlsx");
 
-		// Pre-Load all required data from Excel
+		// PreLoad all required data from Excel
 		workUnderProgressPom = new WorkUnderProgressPom(driver, test, pro);
 
 		// Read the starting and ending rows from the properties file

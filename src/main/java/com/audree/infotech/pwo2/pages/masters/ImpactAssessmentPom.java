@@ -95,22 +95,16 @@ public class ImpactAssessmentPom extends CommonData {
 		try {
 			test.log(Status.INFO, "Checking Product Impact Radio Button.");
 			// Product Impact :
-			if(pro.getProperty("product").equals("Yes")) {
-				radioButton2();
-			}
-			else if(pro.getProperty("product").equals("No"))
+			radioButton1();
 			test.log(Status.PASS, "Checked Product Impact Radio Button.");
-			//Equip/Inst Impact
+			// Equip/Ins Impact
 			test.log(Status.INFO, "Checking Equip/Inst Impact Radio Button.");
 			radioButton3();
 			test.log(Status.PASS, "Checked Equip/Inst Impact Radio Button.");
-		}catch(
-
-	Exception e)
-	{
-		test.log(Status.FAIL, "Failed to Radio button Action Error: " + e.getMessage());
-		throw e;
+		} catch (Exception e) {
+			test.log(Status.FAIL, "Failed to Radio button Action Error: " + e.getMessage());
+			throw e;
+		}
 	}
-}
 
 }
