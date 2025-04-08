@@ -41,6 +41,7 @@ public class WorkOrderInitiationTest extends BaseTest {
 			excelData.put("InitiatedBy", xls.getCellData("MasterData", "InitiatedBy", i));
 			excelData.put("Status", xls.getCellData("MasterData", "Status", i));
 			
+			System.out.println("Login with Initiator username with valid password");
 			Login(pro.getProperty("Initiator"), pro.getProperty("Password"));
 			Thread.sleep(1000);
 		}
