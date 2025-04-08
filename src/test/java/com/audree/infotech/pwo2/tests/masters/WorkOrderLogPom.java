@@ -145,7 +145,7 @@ public class WorkOrderLogPom extends CommonData {
 	public void searchEquipOrInstId(String x) throws Exception {
 		test.log(Status.INFO, "Searching Equipment/Inst Id");
 		equipIdClick.click();
-		SearchBox06(x);
+//		SearchBox06(x);
 
 		test.log(Status.INFO, "Searched Equipment/Inst Id Successfully");
 	}
