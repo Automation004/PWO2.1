@@ -38,7 +38,7 @@ public class InitialReviewByQA extends BaseTest {
 			excelData.put("Initiator", xls.getCellData("Credentials", "Initiator", i));
 			excelData.put("Password", xls.getCellData("Credentials", "Password", i));
 			
-			System.out.println("Login Process Started");
+			System.out.println("Login Process Started add");
 			Login(pro.getProperty("QAReview"), pro.getProperty("Password2"));
 			Thread.sleep(1000);
 			initiatialReviewByQaPom.initialReview();

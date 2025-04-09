@@ -69,7 +69,7 @@ public class CategorizationOfWorkTest extends BaseTest {
 			categorizationOfWorkPom.okButton();
 			Thread.sleep(1000);
 			System.out.println("Record Saved Successfully");
-			System.out.println("Record updated Successfully");
+			System.out.println("Record updated Successfully+++");
 
 		} catch (Exception e) {
 			System.out.println("savingRecord method failed :" + e);
