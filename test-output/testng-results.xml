@@ -1,29 +1,294 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testng-results ignored="0" total="1" passed="1" failed="0" skipped="0">
+<testng-results ignored="0" total="23" passed="22" failed="1" skipped="0">
   <reporter-output>
   </reporter-output>
-  <suite started-at="2025-04-08T17:57:07 IST" name="WorkOrderInitiationTest Suite" finished-at="2025-04-08T17:57:30 IST" duration-ms="23255">
+  <suite started-at="2025-04-09T15:56:20 IST" name="Class-Wise Test Suite" finished-at="2025-04-09T16:00:55 IST" duration-ms="275067">
     <groups>
     </groups>
-    <test started-at="2025-04-08T17:57:07 IST" name="WorkOrderInitiationTest" finished-at="2025-04-08T17:57:30 IST" duration-ms="23255">
-      <class name="com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest">
-        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@58a9760d]" started-at="2025-04-08T17:57:07 IST" name="suiteSetUp" finished-at="2025-04-08T17:57:11 IST" duration-ms="4364" status="PASS">
+    <test started-at="2025-04-09T15:56:20 IST" name="Combined Master Test" finished-at="2025-04-09T15:57:44 IST" duration-ms="83646">
+      <class name="com.audree.infotech.pwo2.tests.masters.EquipOrInstId">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.EquipOrInstId@3d34d211]" started-at="2025-04-09T15:57:23 IST" name="suiteSetUp" finished-at="2025-04-09T15:57:24 IST" duration-ms="1563" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- suiteSetUp -->
-        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@58a9760d]" started-at="2025-04-08T17:57:11 IST" name="setUp" finished-at="2025-04-08T17:57:15 IST" duration-ms="4133" status="PASS">
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.EquipOrInstId@3d34d211]" started-at="2025-04-09T15:57:24 IST" name="Create" finished-at="2025-04-09T15:57:44 IST" duration-ms="19282" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.EquipOrInstId -->
+      <class name="com.audree.infotech.pwo2.tests.masters.FailureObjectTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.FailureObjectTest@69453e37]" started-at="2025-04-09T15:56:47 IST" name="suiteSetUp" finished-at="2025-04-09T15:56:49 IST" duration-ms="1683" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.FailureObjectTest@69453e37]" started-at="2025-04-09T15:56:49 IST" name="Create" finished-at="2025-04-09T15:56:59 IST" duration-ms="10801" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.FailureObjectTest -->
+      <class name="com.audree.infotech.pwo2.tests.masters.Section">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.Section@23348b5d]" started-at="2025-04-09T15:56:20 IST" name="suiteSetUp" finished-at="2025-04-09T15:56:23 IST" duration-ms="2600" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.Section@23348b5d]" started-at="2025-04-09T15:56:23 IST" name="Create" finished-at="2025-04-09T15:56:35 IST" duration-ms="12201" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.Section -->
+      <class name="com.audree.infotech.pwo2.tests.masters.BlockTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.BlockTest@6f4a47c7]" started-at="2025-04-09T15:56:59 IST" name="suiteSetUp" finished-at="2025-04-09T15:57:01 IST" duration-ms="1565" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.BlockTest@6f4a47c7]" started-at="2025-04-09T15:57:01 IST" name="Create" finished-at="2025-04-09T15:57:11 IST" duration-ms="10376" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.BlockTest -->
+      <class name="com.audree.infotech.pwo2.tests.masters.TypeOfWork">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.TypeOfWork@2002fc1d]" started-at="2025-04-09T15:56:35 IST" name="suiteSetUp" finished-at="2025-04-09T15:56:36 IST" duration-ms="1408" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.TypeOfWork@2002fc1d]" started-at="2025-04-09T15:56:36 IST" name="Create" finished-at="2025-04-09T15:56:47 IST" duration-ms="10708" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.TypeOfWork -->
+      <class name="com.audree.infotech.pwo2.tests.masters.RoomId">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.RoomId@ae13544]" started-at="2025-04-09T15:57:11 IST" name="suiteSetUp" finished-at="2025-04-09T15:57:13 IST" duration-ms="1525" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method signature="Create()[pri:0, instance:com.audree.infotech.pwo2.tests.masters.RoomId@ae13544]" started-at="2025-04-09T15:57:13 IST" name="Create" finished-at="2025-04-09T15:57:23 IST" duration-ms="9878" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- Create -->
+      </class> <!-- com.audree.infotech.pwo2.tests.masters.RoomId -->
+    </test> <!-- Combined Master Test -->
+    <test started-at="2025-04-09T15:57:44 IST" name="WorkOrderInitiationTest" finished-at="2025-04-09T15:58:10 IST" duration-ms="26402">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@17a7f733]" started-at="2025-04-09T15:57:44 IST" name="suiteSetUp" finished-at="2025-04-09T15:57:45 IST" duration-ms="1505" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@17a7f733]" started-at="2025-04-09T15:57:45 IST" name="setUp" finished-at="2025-04-09T15:57:48 IST" duration-ms="3046" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- setUp -->
-        <test-method signature="createWorkOrder()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@58a9760d]" started-at="2025-04-08T17:57:15 IST" name="createWorkOrder" finished-at="2025-04-08T17:57:30 IST" duration-ms="14649" status="PASS">
+        <test-method signature="createWorkOrder()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@17a7f733]" started-at="2025-04-09T15:57:48 IST" name="createWorkOrder" finished-at="2025-04-09T15:58:10 IST" duration-ms="21845" status="FAIL">
+          <exception class="java.lang.AssertionError">
+            <message>
+              <![CDATA[The following asserts failed:
+Room ID mismatch expected [null] but found [R10C]]]>
+            </message>
+            <full-stacktrace>
+              <![CDATA[java.lang.AssertionError: The following asserts failed:
+Room ID mismatch expected [null] but found [R10C]
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:46)
+at org.testng.asserts.SoftAssert.assertAll(SoftAssert.java:30)
+at com.audree.infotech.pwo2.pages.masters.WorkOrderInitiationPom.validateWorkOrderInTable(WorkOrderInitiationPom.java:325)
+at com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest.initiatedTab(WorkOrderInitiationTest.java:122)
+at com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest.submitRecord(WorkOrderInitiationTest.java:86)
+at com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest.createWorkOrder(WorkOrderInitiationTest.java:74)
+at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+at java.base/java.lang.reflect.Method.invoke(Method.java:577)
+at org.testng.internal.invokers.MethodInvocationHelper.invokeMethod(MethodInvocationHelper.java:141)
+at org.testng.internal.invokers.TestInvoker.invokeMethod(TestInvoker.java:686)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethod(TestInvoker.java:230)
+at org.testng.internal.invokers.MethodRunner.runInSequence(MethodRunner.java:63)
+at org.testng.internal.invokers.TestInvoker$MethodInvocationAgent.invoke(TestInvoker.java:992)
+at org.testng.internal.invokers.TestInvoker.invokeTestMethods(TestInvoker.java:203)
+at org.testng.internal.invokers.TestMethodWorker.invokeTestMethods(TestMethodWorker.java:154)
+at org.testng.internal.invokers.TestMethodWorker.run(TestMethodWorker.java:134)
+at java.base/java.util.ArrayList.forEach(ArrayList.java:1511)
+at org.testng.TestRunner.privateRun(TestRunner.java:739)
+at org.testng.TestRunner.run(TestRunner.java:614)
+at org.testng.SuiteRunner.runTest(SuiteRunner.java:421)
+at org.testng.SuiteRunner.runSequentially(SuiteRunner.java:413)
+at org.testng.SuiteRunner.privateRun(SuiteRunner.java:373)
+at org.testng.SuiteRunner.run(SuiteRunner.java:312)
+at org.testng.SuiteRunnerWorker.runSuite(SuiteRunnerWorker.java:52)
+at org.testng.SuiteRunnerWorker.run(SuiteRunnerWorker.java:95)
+at org.testng.TestNG.runSuitesSequentially(TestNG.java:1274)
+at org.testng.TestNG.runSuitesLocally(TestNG.java:1208)
+at org.testng.TestNG.runSuites(TestNG.java:1112)
+at org.testng.TestNG.run(TestNG.java:1079)
+at org.testng.remote.AbstractRemoteTestNG.run(AbstractRemoteTestNG.java:115)
+at org.testng.remote.RemoteTestNG.initAndRun(RemoteTestNG.java:293)
+at org.testng.remote.RemoteTestNG.main(RemoteTestNG.java:91)
+]]>
+            </full-stacktrace>
+          </exception> <!-- java.lang.AssertionError -->
           <reporter-output>
           </reporter-output>
         </test-method> <!-- createWorkOrder -->
-        <test-method is-config="true" signature="EndReport()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest@58a9760d]" started-at="2025-04-08T17:57:30 IST" name="EndReport" finished-at="2025-04-08T17:57:31 IST" duration-ms="654" status="PASS">
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest -->
+    </test> <!-- WorkOrderInitiationTest -->
+    <test started-at="2025-04-09T15:58:10 IST" name="EnInitialReviewTest_QA" finished-at="2025-04-09T15:58:27 IST" duration-ms="17414">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest@2b4bac49]" started-at="2025-04-09T15:58:10 IST" name="suiteSetUp" finished-at="2025-04-09T15:58:12 IST" duration-ms="1590" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest@2b4bac49]" started-at="2025-04-09T15:58:12 IST" name="setUp" finished-at="2025-04-09T15:58:15 IST" duration-ms="3048" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="EnInitialReviewWorkFlow()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest@2b4bac49]" started-at="2025-04-09T15:58:15 IST" name="EnInitialReviewWorkFlow" finished-at="2025-04-09T15:58:17 IST" duration-ms="2336" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- EnInitialReviewWorkFlow -->
+        <test-method signature="savingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest@2b4bac49]" started-at="2025-04-09T15:58:17 IST" name="savingRecord" finished-at="2025-04-09T15:58:23 IST" duration-ms="6130" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- savingRecord -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest@2b4bac49]" started-at="2025-04-09T15:58:23 IST" name="submittingRecord" finished-at="2025-04-09T15:58:27 IST" duration-ms="4302" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.EnInitialReviewTest -->
+    </test> <!-- EnInitialReviewTest_QA -->
+    <test started-at="2025-04-09T15:58:27 IST" name="EnInitialReviewTest" finished-at="2025-04-09T15:58:42 IST" duration-ms="14075">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA@7c83dc97]" started-at="2025-04-09T15:58:27 IST" name="suiteSetUp" finished-at="2025-04-09T15:58:29 IST" duration-ms="1463" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA@7c83dc97]" started-at="2025-04-09T15:58:29 IST" name="setUp" finished-at="2025-04-09T15:58:33 IST" duration-ms="3590" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="initialReviewWorkFlow()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA@7c83dc97]" started-at="2025-04-09T15:58:33 IST" name="initialReviewWorkFlow" finished-at="2025-04-09T15:58:34 IST" duration-ms="1233" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- initialReviewWorkFlow -->
+        <test-method signature="savingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA@7c83dc97]" started-at="2025-04-09T15:58:34 IST" name="savingRecord" finished-at="2025-04-09T15:58:38 IST" duration-ms="4334" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- savingRecord -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA@7c83dc97]" started-at="2025-04-09T15:58:38 IST" name="submittingRecord" finished-at="2025-04-09T15:58:42 IST" duration-ms="3447" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.InitialReviewByQA -->
+    </test> <!-- EnInitialReviewTest -->
+    <test started-at="2025-04-09T15:58:42 IST" name="WorkUnderProgressTestCases" finished-at="2025-04-09T15:59:11 IST" duration-ms="29208">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:42 IST" name="suiteSetUp" finished-at="2025-04-09T15:58:43 IST" duration-ms="1168" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:43 IST" name="setUp" finished-at="2025-04-09T15:58:47 IST" duration-ms="4031" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="WorkUnderProgressSelect()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:47 IST" name="WorkUnderProgressSelect" finished-at="2025-04-09T15:58:48 IST" duration-ms="1702" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WorkUnderProgressSelect -->
+        <test-method signature="WorkUnderProgressActivitySave()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:48 IST" name="WorkUnderProgressActivitySave" finished-at="2025-04-09T15:58:51 IST" duration-ms="2793" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WorkUnderProgressActivitySave -->
+        <test-method signature="WorkUnderProgressActivitySubmit()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:51 IST" name="WorkUnderProgressActivitySubmit" finished-at="2025-04-09T15:58:55 IST" duration-ms="3562" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WorkUnderProgressActivitySubmit -->
+        <test-method signature="WorkUnderProgressSave()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:58:55 IST" name="WorkUnderProgressSave" finished-at="2025-04-09T15:59:04 IST" duration-ms="9062" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WorkUnderProgressSave -->
+        <test-method signature="WorkUnderProgressSubmit()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest@568ff82]" started-at="2025-04-09T15:59:04 IST" name="WorkUnderProgressSubmit" finished-at="2025-04-09T15:59:11 IST" duration-ms="6880" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- WorkUnderProgressSubmit -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.WorkUnderProgressTest -->
+    </test> <!-- WorkUnderProgressTestCases -->
+    <test started-at="2025-04-09T15:59:11 IST" name="ImpactAssessmentByUserTest" finished-at="2025-04-09T15:59:30 IST" duration-ms="19258">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.ImpactAssessmentByUserTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.ImpactAssessmentByUserTest@45ca843]" started-at="2025-04-09T15:59:11 IST" name="suiteSetUp" finished-at="2025-04-09T15:59:12 IST" duration-ms="1556" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.ImpactAssessmentByUserTest@45ca843]" started-at="2025-04-09T15:59:12 IST" name="setUp" finished-at="2025-04-09T15:59:15 IST" duration-ms="3096" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.ImpactAssessmentByUserTest@45ca843]" started-at="2025-04-09T15:59:15 IST" name="submittingRecord" finished-at="2025-04-09T15:59:30 IST" duration-ms="14601" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.ImpactAssessmentByUserTest -->
+    </test> <!-- ImpactAssessmentByUserTest -->
+    <test started-at="2025-04-09T15:59:30 IST" name="CategorizationOfWorkTests" finished-at="2025-04-09T15:59:56 IST" duration-ms="26396">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest@ba54932]" started-at="2025-04-09T15:59:30 IST" name="suiteSetUp" finished-at="2025-04-09T15:59:32 IST" duration-ms="1543" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest@ba54932]" started-at="2025-04-09T15:59:32 IST" name="setUp" finished-at="2025-04-09T15:59:35 IST" duration-ms="3160" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest@ba54932]" started-at="2025-04-09T15:59:35 IST" name="submittingRecord" finished-at="2025-04-09T15:59:56 IST" duration-ms="21686" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.CategorizationOfWorkTest -->
+    </test> <!-- CategorizationOfWorkTests -->
+    <test started-at="2025-04-09T15:59:56 IST" name="WorkUnderClosureTest" finished-at="2025-04-09T16:00:22 IST" duration-ms="25669">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure@3cc1435c]" started-at="2025-04-09T15:59:56 IST" name="suiteSetUp" finished-at="2025-04-09T15:59:58 IST" duration-ms="1062" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure@3cc1435c]" started-at="2025-04-09T15:59:58 IST" name="setUp" finished-at="2025-04-09T16:00:01 IST" duration-ms="3464" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure@3cc1435c]" started-at="2025-04-09T16:00:01 IST" name="submittingRecord" finished-at="2025-04-09T16:00:22 IST" duration-ms="21136" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.WorkUnderClosure -->
+    </test> <!-- WorkUnderClosureTest -->
+    <test started-at="2025-04-09T16:00:22 IST" name="Closure Initiation Test" finished-at="2025-04-09T16:00:34 IST" duration-ms="11780">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest@671a5887]" started-at="2025-04-09T16:00:22 IST" name="suiteSetUp" finished-at="2025-04-09T16:00:24 IST" duration-ms="1552" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest@671a5887]" started-at="2025-04-09T16:00:24 IST" name="setUp" finished-at="2025-04-09T16:00:29 IST" duration-ms="5609" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="testSubmittingRecord()[pri:2, instance:com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest@671a5887]" started-at="2025-04-09T16:00:29 IST" name="testSubmittingRecord" description="Submits the closure initiation record" finished-at="2025-04-09T16:00:34 IST" duration-ms="4609" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testSubmittingRecord -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest -->
+    </test> <!-- Closure Initiation Test -->
+    <test started-at="2025-04-09T16:00:34 IST" name="FinalClosureTest" finished-at="2025-04-09T16:00:55 IST" duration-ms="21045">
+      <class name="com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest">
+        <test-method is-config="true" signature="suiteSetUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest@1329eff]" started-at="2025-04-09T16:00:34 IST" name="suiteSetUp" finished-at="2025-04-09T16:00:36 IST" duration-ms="1604" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- suiteSetUp -->
+        <test-method is-config="true" signature="setUp()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest@1329eff]" started-at="2025-04-09T16:00:36 IST" name="setUp" finished-at="2025-04-09T16:00:39 IST" duration-ms="3023" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method signature="submittingRecord()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest@1329eff]" started-at="2025-04-09T16:00:39 IST" name="submittingRecord" finished-at="2025-04-09T16:00:55 IST" duration-ms="16415" status="PASS">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- submittingRecord -->
+        <test-method is-config="true" signature="EndReport()[pri:0, instance:com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest@1329eff]" started-at="2025-04-09T16:00:55 IST" name="EndReport" finished-at="2025-04-09T16:00:55 IST" duration-ms="460" status="PASS">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- EndReport -->
-      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.WorkOrderInitiationTest -->
-    </test> <!-- WorkOrderInitiationTest -->
-  </suite> <!-- WorkOrderInitiationTest Suite -->
+      </class> <!-- com.audree.infotech.pwo2.tests.Transcations.FinalClosureQATest -->
+    </test> <!-- FinalClosureTest -->
+  </suite> <!-- Class-Wise Test Suite -->
 </testng-results>

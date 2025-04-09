@@ -7,9 +7,8 @@
         <methods>
           <include name="EndReport"/>
           <include name="setUp"/>
-          <include name="testSubmittingRecord"/>
           <include name="suiteSetUp"/>
-          <include name="tearDown"/>
+          <include name="testSubmittingRecord"/>
         </methods>
       </class> <!-- com.audree.infotech.pwo2.tests.Transcations.ClosureInitiationTest -->
     </classes>

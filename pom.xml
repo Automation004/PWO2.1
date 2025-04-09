@@ -13,7 +13,6 @@
 			<version>4.9.0</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/org.testng/testng -->
 		<dependency>
 			<groupId>org.testng</groupId>
 			<artifactId>testng</artifactId>
@@ -32,81 +31,77 @@
 			<version>4.1.2</version>
 		</dependency>
 
-		<!-- https://mvnrepository.com/artifact/com.aventstack/extentreports -->
 		<dependency>
 			<groupId>com.aventstack</groupId>
 			<artifactId>extentreports</artifactId>
 			<version>5.1.2</version>
 		</dependency>
 
-		<!--
-		https://mvnrepository.com/artifact/io.github.bonigarcia/webdrivermanager -->
 		<dependency>
 			<groupId>io.github.bonigarcia</groupId>
 			<artifactId>webdrivermanager</artifactId>
 			<version>5.4.1</version>
 		</dependency>
-
 	</dependencies>
+
 	<build>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
-				<version>3.0.0</version>
+				<version>3.5.3</version>
 				<configuration>
 					<argLine>-Xmx2048m</argLine>
 				</configuration>
 			</plugin>
-
 		</plugins>
 	</build>
+
 	<profiles>
+		<profile>
+			<id>AllMastersSuite</id>
+			<activation>
+				<activeByDefault>false</activeByDefault>
+			</activation>
+			<build>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>src/test/resources/ConfigurationTests/AllMastersXML.xml</suiteXmlFile>
+								</suiteXmlFiles>
+								<parallel>none</parallel>
+								<argLine>-Xmx2048m</argLine>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
+			</build>
+		</profile>
+		
 		<profile>
 			<id>InitiationByUser</id>
 			<activation>
 				<activeByDefault>false</activeByDefault>
 			</activation>
 			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.5.3</version>
-						<configuration>
-							<suiteXmlFiles>
-								<suiteXmlFile>
-									src/test/resources/ConfigurationTests/07_InitiatorSubmitting.xml
-								</suiteXmlFile>
-							</suiteXmlFiles>
-						</configuration>
-					</plugin>
-				</plugins>
+				<pluginManagement>
+					<plugins>
+						<plugin>
+							<artifactId>maven-surefire-plugin</artifactId>
+							<configuration>
+								<suiteXmlFiles>
+									<suiteXmlFile>
+										src/test/resources/ConfigurationTests/07_InitiatorSubmitting.xml</suiteXmlFile>
+								</suiteXmlFiles>
+							</configuration>
+						</plugin>
+					</plugins>
+				</pluginManagement>
 			</build>
 		</profile>
+
 	</profiles>
-	<!-- 
-		<profile>
-			<id>InitialReviewByEn</id>
-			<build>
-				<plugins>
-	<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-	<artifactId>maven-surefire-plugin</artifactId>
-						<version>3.5.3</version>
-	<configuration>
-							<suiteXmlFiles>
-								<suiteXmlFile>
-	com.audree.infotech.pwo2.config/08_EN
-									Initial
-	Review</suiteXmlFile>
-							</suiteXmlFiles>
-						</configuration>
-	</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>-->
-
-
 </project>
